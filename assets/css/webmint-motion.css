@@ -1,0 +1,1827 @@
+/* =========================================================
+   BITMINT LAB — PREMIUM RESTRAINED MOTION LAYER
+   Animation-only enhancement. Existing layout/UI remains intact.
+   ========================================================= */
+
+:root {
+    --wm-motion-ease: cubic-bezier(.22, 1, .36, 1);
+    --wm-motion-soft: cubic-bezier(.2, .75, .25, 1);
+}
+
+/* ---------- Shared reveal system ---------- */
+.js .wm-motion-reveal {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+    transition:
+        opacity .66s var(--wm-motion-soft),
+        transform .66s var(--wm-motion-ease),
+        filter .66s ease;
+    transition-delay: var(--wm-reveal-delay, 0ms);
+    will-change: opacity, transform;
+}
+
+.js .wm-motion-reveal[data-motion="left"] { transform: translate3d(-28px, 0, 0); }
+.js .wm-motion-reveal[data-motion="right"] { transform: translate3d(28px, 0, 0); }
+.js .wm-motion-reveal[data-motion="scale"] { transform: scale(.975); }
+.js .wm-motion-reveal[data-motion="zoom"] { transform: scale(1.05); }
+
+.js .wm-motion-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    filter: none;
+}
+
+/* ---------- Hero ---------- */
+.wm-hero {
+    isolation: isolate;
+}
+
+.wm-motion-enabled .wm-hero-background::before {
+    position: absolute;
+    inset: -12%;
+    content: "";
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 18% 30%, rgba(0, 208, 132, .055), transparent 30%),
+        radial-gradient(circle at 82% 38%, rgba(86, 161, 255, .05), transparent 34%),
+        radial-gradient(circle at 58% 82%, rgba(125, 91, 228, .04), transparent 30%);
+    transform: translate3d(-1.5%, -1%, 0) scale(1.04);
+    animation: wmHeroGradientDrift 24s ease-in-out infinite alternate;
+}
+
+.wm-motion-enabled .wm-hero-grid {
+
+    /*
+     * Original flat grid now works only as
+     * extremely faint upper atmosphere texture.
+     */
+
+    opacity: 0.12;
+
+    animation:
+        wmHeroGridDrift
+        46s
+        linear
+        infinite;
+
+    will-change:
+        transform;
+
+}
+
+.wm-motion-enabled .wm-hero-glow {
+    will-change: transform;
+}
+
+.wm-motion-enabled .wm-hero-glow-one { animation: wmGlowDriftOne 22s ease-in-out infinite alternate; }
+.wm-motion-enabled .wm-hero-glow-two { animation: wmGlowDriftTwo 27s ease-in-out infinite alternate; }
+
+.wm-hero-glow-three {
+    position: absolute;
+    right: 34%;
+    bottom: 5%;
+    width: min(34vw, 460px);
+    height: min(34vw, 460px);
+    background: radial-gradient(circle, rgba(126, 91, 228, .10), transparent 68%);
+    border-radius: 50%;
+    filter: blur(34px);
+    opacity: .48;
+    pointer-events: none;
+    animation: wmGlowDriftThree 31s ease-in-out infinite alternate;
+}
+
+.wm-hero-motion-title,
+.wm-hero-motion-description,
+.wm-hero-motion-actions,
+.wm-hero-motion-visual {
+    opacity: 0;
+    will-change: opacity, transform, filter;
+}
+
+.wm-hero-motion-title {
+    transform: translate3d(0, 24px, 0);
+    filter: blur(7px);
+    transition: opacity .78s var(--wm-motion-soft), transform .78s var(--wm-motion-ease), filter .78s ease;
+}
+
+.wm-hero-motion-description {
+    transform: translate3d(0, 16px, 0);
+    transition: opacity .65s ease .16s, transform .65s var(--wm-motion-ease) .16s;
+}
+
+.wm-hero-motion-actions {
+    transform: translate3d(0, 12px, 0) scale(.985);
+    transition: opacity .62s ease .28s, transform .62s var(--wm-motion-ease) .28s;
+}
+
+.wm-hero-motion-visual {
+    transform: translate3d(0, 15px, 0);
+    transition: opacity .8s ease .22s, transform .8s var(--wm-motion-ease) .22s;
+}
+
+.wm-hero-motion-in .wm-hero-motion-title,
+.wm-hero-motion-in .wm-hero-motion-description,
+.wm-hero-motion-in .wm-hero-motion-actions,
+.wm-hero-motion-in .wm-hero-motion-visual {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+}
+
+.wm-hero-motion-in .wm-hero-motion-visual {
+    animation: wmHeroFloat 7.8s ease-in-out 1.25s infinite;
+}
+
+@keyframes wmHeroGradientDrift {
+    0% { transform: translate3d(-1.5%, -1%, 0) scale(1.04); }
+    100% { transform: translate3d(1.5%, 1.2%, 0) scale(1.07); }
+}
+@keyframes wmHeroGridDrift {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(18px, 14px, 0); }
+}
+@keyframes wmGlowDriftOne {
+    from { transform: translate3d(-8px, -6px, 0) scale(.98); }
+    to { transform: translate3d(22px, 16px, 0) scale(1.05); }
+}
+@keyframes wmGlowDriftTwo {
+    from { transform: translate3d(8px, 4px, 0) scale(1.02); }
+    to { transform: translate3d(-24px, 18px, 0) scale(.96); }
+}
+@keyframes wmGlowDriftThree {
+    from { transform: translate3d(-10px, 8px, 0) scale(.98); }
+    to { transform: translate3d(18px, -18px, 0) scale(1.06); }
+}
+@keyframes wmHeroFloat {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50% { transform: translate3d(0, -8px, 0); }
+}
+
+/* ---------- Product ecosystem ---------- */
+@media (hover: hover) and (pointer: fine) {
+    .wm-product-card:hover {
+        transform: translateY(-5px);
+    }
+    .wm-product-card:hover .wm-product-icon {
+        transform: scale(1.05);
+    }
+    .wm-product-card a i,
+    .wm-product-card .fa-arrow-right {
+        transition: transform .28s var(--wm-motion-ease);
+    }
+    .wm-product-card:hover a i,
+    .wm-product-card:hover .fa-arrow-right {
+        transform: translateX(3px);
+    }
+}
+
+/* ---------- Featured product ---------- */
+.wm-motion-bullet {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+    transition: opacity .46s ease, transform .46s var(--wm-motion-ease);
+    transition-delay: var(--wm-bullet-delay, 0ms);
+}
+.wm-motion-bullet.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* ---------- Custom software solutions ---------- */
+@media (hover: hover) and (pointer: fine) {
+    .wm-custom-service-card:hover { transform: translateY(-4px); }
+    .wm-custom-service-card:hover .wm-custom-service-icon { transform: scale(1.045); }
+}
+
+/* ---------- Why Bitmint Lab ---------- */
+.wm-why-feature-card .wm-why-card-icon {
+    transition: transform .3s var(--wm-motion-ease);
+}
+@media (hover: hover) and (pointer: fine) {
+    .wm-why-feature-card:hover .wm-why-card-icon { transform: scale(1.04); }
+}
+
+/* ---------- Development process ---------- */
+.wm-process-line-progress {
+    animation: none !important;
+    transform: scaleX(0);
+    transform-origin: left center;
+    will-change: transform;
+}
+
+.wm-process-step .wm-process-step-marker,
+.wm-process-step .wm-process-card,
+.wm-process-step .wm-process-icon {
+    transition:
+        transform .4s var(--wm-motion-ease),
+        box-shadow .4s ease,
+        border-color .4s ease,
+        opacity .4s ease;
+}
+
+.wm-process-step:not(.is-process-active) .wm-process-step-marker {
+    opacity: .72;
+    transform: scale(.94);
+}
+
+.wm-process-step.is-process-active .wm-process-step-marker {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.wm-process-mobile-progress {
+    display: none;
+}
+
+/* ---------- Industries ---------- */
+.wm-industry-icon { transition: transform .3s var(--wm-motion-ease); }
+@media (hover: hover) and (pointer: fine) {
+    .wm-industry-card:hover { transform: translateY(-4px); }
+    .wm-industry-card:hover .wm-industry-icon { transform: scale(1.045); }
+}
+
+/* ---------- About ---------- */
+.wm-about-zoom-reveal {
+    transform-origin: center;
+}
+.wm-motion-enabled .wm-about-glow-one { animation: wmAboutGlowOne 26s ease-in-out infinite alternate; }
+.wm-motion-enabled .wm-about-glow-two { animation: wmAboutGlowTwo 31s ease-in-out infinite alternate; }
+@keyframes wmAboutGlowOne {
+    from { transform: translate3d(0, -8px, 0); }
+    to { transform: translate3d(18px, 16px, 0); }
+}
+@keyframes wmAboutGlowTwo {
+    from { transform: translate3d(5px, 8px, 0); }
+    to { transform: translate3d(-16px, -12px, 0); }
+}
+
+/* ---------- Final CTA ---------- */
+.wm-final-cta {
+    isolation: isolate;
+}
+.wm-motion-enabled .wm-final-cta-background::after {
+    position: absolute;
+    inset: -10%;
+    content: "";
+    pointer-events: none;
+    background: radial-gradient(circle at 50% 48%, rgba(0, 208, 132, .10), transparent 43%);
+    transform: scale(.96);
+    opacity: .55;
+    animation: wmFinalGlow 9s ease-in-out infinite alternate;
+}
+.wm-final-motion-ready .wm-final-heading-motion {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+    transition: opacity .7s ease, transform .7s var(--wm-motion-ease);
+}
+.wm-final-motion-ready .wm-final-button-motion {
+    opacity: 0;
+    transform: scale(.96);
+    transition: opacity .58s ease .18s, transform .58s var(--wm-motion-ease) .18s;
+}
+.wm-final-motion-in .wm-final-heading-motion,
+.wm-final-motion-in .wm-final-button-motion {
+    opacity: 1;
+    transform: none;
+}
+.wm-final-motion-in .wm-final-button-motion {
+    animation: wmFinalButtonEntrance .72s var(--wm-motion-ease) .5s 1 both;
+}
+@keyframes wmFinalGlow {
+    from { transform: translate3d(-1%, 0, 0) scale(.96); opacity: .42; }
+    to { transform: translate3d(1%, -1%, 0) scale(1.04); opacity: .68; }
+}
+@keyframes wmFinalButtonEntrance {
+    0%, 100% { transform: scale(1); }
+    52% { transform: scale(1.025); }
+}
+
+/* ---------- Navbar glass transition ---------- */
+.wm-header .wm-navbar {
+    transition:
+        min-height .32s ease,
+        background-color .32s ease,
+        border-color .32s ease,
+        box-shadow .32s ease,
+        backdrop-filter .32s ease;
+}
+.wm-header.wm-header-scrolled .wm-navbar {
+    background: rgba(255, 255, 255, .88);
+    -webkit-backdrop-filter: blur(14px) saturate(135%);
+    backdrop-filter: blur(14px) saturate(135%);
+    border-bottom-color: rgba(23, 40, 61, .08);
+    box-shadow: 0 10px 30px rgba(20, 20, 38, .055);
+}
+
+/* SlickNav: hamburger → X + slide/fade menu + staggered links */
+.wm-header .slicknav_icon-bar {
+    transition: transform .28s var(--wm-motion-ease), opacity .2s ease;
+    transform-origin: center;
+}
+.wm-header .slicknav_open .slicknav_icon-bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.wm-header .slicknav_open .slicknav_icon-bar:nth-child(2) { opacity: 0; transform: scaleX(.4); }
+.wm-header .slicknav_open .slicknav_icon-bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+.wm-header .slicknav_nav {
+    transform-origin: top center;
+}
+.wm-header .slicknav_nav[style*="display: block"],
+.wm-header .slicknav_nav:not([style*="display: none"]) {
+    animation: wmMobileMenuOpen .3s var(--wm-motion-ease) both;
+}
+.wm-header .slicknav_nav a {
+    animation: wmMobileLinkIn .32s var(--wm-motion-ease) both;
+    animation-delay: var(--wm-menu-delay, 0ms);
+}
+@keyframes wmMobileMenuOpen {
+    from { opacity: 0; transform: translate3d(0, -8px, 0); }
+    to { opacity: 1; transform: none; }
+}
+@keyframes wmMobileLinkIn {
+    from { opacity: 0; transform: translate3d(0, -5px, 0); }
+    to { opacity: 1; transform: none; }
+}
+
+/* ---------- Optional desktop cursor glow ---------- */
+.wm-cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(circle, rgba(0, 208, 132, .035), rgba(86, 161, 255, .018) 36%, transparent 68%);
+    transition: opacity .4s ease;
+    will-change: transform;
+}
+.wm-cursor-glow.is-visible { opacity: 1; }
+
+/* ---------- Mobile / coarse-pointer rules ---------- */
+@media (max-width: 991px), (pointer: coarse) {
+    .wm-cursor-glow { display: none !important; }
+}
+
+@media (max-width: 767px) {
+    .js .wm-motion-reveal,
+    .js .wm-motion-reveal[data-motion="left"],
+    .js .wm-motion-reveal[data-motion="right"],
+    .js .wm-motion-reveal[data-motion="scale"],
+    .js .wm-motion-reveal[data-motion="zoom"] {
+        transform: translate3d(0, 16px, 0) scale(.995);
+        filter: none;
+        transition-duration: .5s;
+    }
+
+    .js .wm-motion-reveal.is-visible { transform: none; }
+
+    .wm-motion-enabled .wm-hero-background::before,
+    .wm-motion-enabled .wm-hero-grid,
+    .wm-motion-enabled .wm-hero-glow,
+    .wm-hero-glow-three,
+    .wm-motion-enabled .wm-about-glow-one,
+    .wm-motion-enabled .wm-about-glow-two {
+        animation: none !important;
+    }
+
+    .wm-hero-glow-three { display: none; }
+    .wm-hero-motion-in .wm-hero-motion-visual { animation: none; }
+
+    .wm-product-card:active,
+    .wm-custom-service-card:active,
+    .wm-industry-card:active {
+        transform: scale(.992);
+        transition-duration: .14s;
+    }
+
+    .wm-process-line { display: none; }
+
+    .wm-process-mobile-progress {
+        position: absolute;
+        top: 15px;
+        bottom: 15px;
+        left: 28px;
+        z-index: 1;
+        display: block;
+        width: 2px;
+        background: linear-gradient(to bottom, #00d084, #5d8cff, #775ee8);
+        border-radius: 99px;
+        transform: scaleY(0);
+        transform-origin: top center;
+        will-change: transform;
+    }
+
+    .wm-process-step::before {
+        background: rgba(31, 61, 81, .09) !important;
+    }
+
+    .wm-motion-enabled .wm-final-cta-background::after {
+        animation: none;
+        opacity: .45;
+    }
+}
+
+@media (max-width: 575px) {
+    .wm-process-mobile-progress { left: 23px; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+    }
+
+    .wm-motion-reveal,
+    .wm-motion-bullet,
+    .wm-hero-motion-title,
+    .wm-hero-motion-description,
+    .wm-hero-motion-actions,
+    .wm-hero-motion-visual,
+    .wm-final-heading-motion,
+    .wm-final-button-motion {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .wm-hero-background::before,
+    .wm-hero-grid,
+    .wm-hero-glow,
+    .wm-hero-glow-three,
+    .wm-about-glow,
+    .wm-final-cta-background::after,
+    .wm-cursor-glow {
+        animation: none !important;
+        display: none !important;
+    }
+
+    .wm-process-line-progress,
+    .wm-process-mobile-progress {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+    }
+}
+
+/* =========================================================
+   MOTION FIX v2 — single reveal engine, no WOW conflicts
+   ========================================================= */
+.webmint-reveal.wm-motion-reveal {
+    visibility: visible !important;
+    animation-name: none !important;
+}
+
+/* Hero should never inherit generic reveal visibility/transform animation. */
+.wm-hero .webmint-reveal {
+    visibility: visible !important;
+    animation: none !important;
+}
+
+/* Keep the requested illustration float perceptible but extremely subtle. */
+.wm-hero-motion-in .wm-hero-motion-visual {
+    animation: wmHeroFloatV2 12s ease-in-out 1.4s infinite !important;
+}
+@keyframes wmHeroFloatV2 {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50% { transform: translate3d(0, -3px, 0); }
+}
+
+/* Slightly stronger reveal distance so animations are actually visible, still restrained. */
+.js .wm-motion-reveal {
+    transform: translate3d(0, 30px, 0);
+    transition-duration: .72s;
+}
+.js .wm-motion-reveal[data-motion="left"] { transform: translate3d(-34px, 0, 0); }
+.js .wm-motion-reveal[data-motion="right"] { transform: translate3d(34px, 0, 0); }
+.js .wm-motion-reveal[data-motion="scale"] { transform: translate3d(0, 8px, 0) scale(.955); }
+.js .wm-motion-reveal[data-motion="zoom"] { transform: scale(1.055); }
+.js .wm-motion-reveal.is-visible { transform: none; }
+
+/* Clear one-time CTA state: never continuously pulse the button. */
+.wm-final-motion-in .wm-final-button-motion {
+    animation: wmFinalButtonEntrance .72s var(--wm-motion-ease) .5s 1 both !important;
+}
+
+@media (max-width: 767px) {
+    .wm-hero-motion-in .wm-hero-motion-visual { animation: none !important; }
+    .js .wm-motion-reveal,
+    .js .wm-motion-reveal[data-motion="left"],
+    .js .wm-motion-reveal[data-motion="right"],
+    .js .wm-motion-reveal[data-motion="scale"],
+    .js .wm-motion-reveal[data-motion="zoom"] {
+        transform: translate3d(0, 18px, 0) scale(.99);
+        transition-duration: .52s;
+    }
+    .js .wm-motion-reveal.is-visible { transform: none; }
+}
+
+
+
+/* =========================================================
+   BITMINT LAB — MINT NEURAL PARTICLE MESH
+   Premium AI / technology ambient hero background
+   ========================================================= */
+
+/* Keep hero background layers properly stacked */
+.wm-hero-background {
+    isolation: isolate;
+}
+
+/* Neural canvas */
+.wm-neural-canvas {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 2;
+
+    display: block;
+
+    pointer-events: none;
+
+    opacity: 0.88;
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.94) 0%,
+            rgba(0, 0, 0, 0.92) 68%,
+            rgba(0, 0, 0, 0.12) 100%
+        );
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.94) 0%,
+            rgba(0, 0, 0, 0.92) 68%,
+            rgba(0, 0, 0, 0.12) 100%
+        );
+}
+
+/* Grid behind neural network */
+.wm-hero-grid {
+    z-index: 1;
+}
+
+/* Ambient glow behind everything */
+.wm-hero-glow {
+    z-index: 0;
+}
+
+/* Orbit circles should remain extremely subtle */
+.wm-hero-orbit {
+    z-index: 1;
+
+    opacity: 0.42;
+
+    border-color:
+        rgba(0, 208, 132, 0.08);
+}
+
+/* Prevent orbit from competing with neural mesh */
+.wm-hero-orbit-two {
+    opacity: 0.28;
+}
+
+/* Extra atmospheric fade around center */
+.wm-hero-background::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 72% 42%,
+            transparent 0%,
+            transparent 20%,
+            rgba(255, 255, 255, 0.035) 55%,
+            transparent 78%
+        );
+}
+
+/* Neural layer must stay behind actual hero content */
+.wm-hero-container {
+    position: relative;
+    z-index: 5;
+}
+
+
+/* =========================================================
+   MOBILE PERFORMANCE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .wm-neural-canvas {
+        opacity: 0.62;
+    }
+
+    /* Reduce competing decorative elements */
+    .wm-hero-orbit {
+        opacity: 0.18;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .wm-neural-canvas {
+        opacity: 0.38;
+    }
+}
+
+/* =========================================================
+   HERO DECORATION BALANCING
+   Neural mesh is now the primary technology background.
+   ========================================================= */
+
+.wm-motion-enabled .wm-hero-orbit-one {
+    animation-duration: 42s;
+}
+
+.wm-motion-enabled .wm-hero-orbit-two {
+    animation-duration: 58s;
+}
+
+/* Make grid extremely restrained behind particles */
+.wm-motion-enabled .wm-hero-grid {
+    opacity: 0.20;
+}
+
+/* Keep glows soft instead of dominating the mesh */
+.wm-motion-enabled .wm-hero-glow-one {
+    opacity: 0.58;
+}
+
+.wm-motion-enabled .wm-hero-glow-two {
+    opacity: 0.50;
+}
+
+.wm-hero-glow-three {
+    opacity: 0.30;
+}
+
+/* =========================================================
+   BITMINT LAB — PREMIUM HERO ATMOSPHERE V2
+   Aurora + Cursor Glow + Perspective Grid + Depth
+========================================================= */
+
+
+/* ---------------------------------------------------------
+   AURORA LIGHT FIELD
+--------------------------------------------------------- */
+
+.wm-hero-aurora {
+    position: absolute;
+
+    top: -22%;
+    left: -12%;
+
+    width: 125%;
+    height: 125%;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    opacity: 0.58;
+
+    filter: blur(54px);
+
+    transform:
+        translate3d(
+            var(--wm-parallax-x, 0px),
+            var(--wm-parallax-y, 0px),
+            0
+        )
+        scale(1.08);
+
+    background:
+        radial-gradient(
+            ellipse at 24% 32%,
+            rgba(0, 208, 132, 0.13) 0%,
+            rgba(0, 208, 132, 0.045) 25%,
+            transparent 56%
+        ),
+
+        radial-gradient(
+            ellipse at 68% 28%,
+            rgba(41, 196, 255, 0.10) 0%,
+            rgba(41, 196, 255, 0.035) 28%,
+            transparent 58%
+        ),
+
+        radial-gradient(
+            ellipse at 72% 72%,
+            rgba(114, 83, 255, 0.075) 0%,
+            rgba(114, 83, 255, 0.025) 30%,
+            transparent 60%
+        );
+
+    background-size:
+        70% 70%,
+        72% 72%,
+        70% 70%;
+
+    animation:
+        wmPremiumAuroraDrift
+        30s
+        ease-in-out
+        infinite alternate;
+
+    will-change:
+        transform,
+        background-position;
+}
+
+
+@keyframes wmPremiumAuroraDrift {
+
+    0% {
+        background-position:
+            0% 10%,
+            100% 0%,
+            70% 100%;
+    }
+
+    35% {
+        background-position:
+            14% 22%,
+            82% 14%,
+            58% 84%;
+    }
+
+    70% {
+        background-position:
+            4% 32%,
+            94% 24%,
+            72% 72%;
+    }
+
+    100% {
+        background-position:
+            20% 8%,
+            78% 28%,
+            52% 92%;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   REACTIVE MINT CURSOR LIGHT
+--------------------------------------------------------- */
+
+.wm-hero-cursor-glow {
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 520px;
+    height: 520px;
+
+    z-index: 3;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    transform:
+        translate3d(
+            calc(var(--wm-cursor-x, -1000px) - 50%),
+            calc(var(--wm-cursor-y, -1000px) - 50%),
+            0
+        );
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 208, 132, 0.085) 0%,
+            rgba(18, 198, 177, 0.038) 28%,
+            rgba(50, 175, 255, 0.018) 48%,
+            transparent 72%
+        );
+
+    filter: blur(10px);
+
+    transition:
+        opacity 0.5s ease;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+.wm-hero:hover .wm-hero-cursor-glow {
+    opacity: 1;
+}
+
+
+/* ---------------------------------------------------------
+   PERSPECTIVE TECHNOLOGY GRID
+--------------------------------------------------------- */
+
+.wm-hero-perspective-grid {
+
+    position: absolute;
+
+    left: -15%;
+    right: -15%;
+
+    bottom: -42%;
+
+    height: 82%;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    opacity: 0.17;
+
+    transform-origin:
+        center bottom;
+
+    transform:
+        perspective(620px)
+        rotateX(63deg)
+        translate3d(
+            var(--wm-grid-parallax-x, 0px),
+            var(--wm-grid-parallax-y, 0px),
+            0
+        );
+
+    background-image:
+
+        linear-gradient(
+            rgba(0, 171, 126, 0.14) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(0, 171, 126, 0.12) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        62px 62px;
+
+    -webkit-mask-image:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,0.72),
+            rgba(0,0,0,0.32) 42%,
+            transparent 88%
+        );
+
+    mask-image:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,0.72),
+            rgba(0,0,0,0.32) 42%,
+            transparent 88%
+        );
+
+    animation:
+        wmPerspectiveGridFlow
+        18s
+        linear
+        infinite;
+
+    will-change:
+        background-position,
+        transform;
+}
+
+
+@keyframes wmPerspectiveGridFlow {
+
+    from {
+
+        background-position:
+            0 0,
+            0 0;
+
+    }
+
+    to {
+
+        background-position:
+            0 62px,
+            62px 0;
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   DEPTH LAYERING
+--------------------------------------------------------- */
+
+.wm-hero-glow-one {
+    z-index: 0;
+}
+
+.wm-hero-glow-two {
+    z-index: 0;
+}
+
+.wm-hero-glow-three {
+    z-index: 0;
+}
+
+.wm-hero-aurora {
+    z-index: 0;
+}
+
+.wm-hero-grid {
+    z-index: 1;
+}
+
+.wm-hero-perspective-grid {
+    z-index: 1;
+}
+
+.wm-hero-orbit {
+    z-index: 1;
+}
+
+.wm-neural-canvas {
+    z-index: 2;
+}
+
+.wm-hero-cursor-glow {
+    z-index: 3;
+}
+
+.wm-hero-container {
+    z-index: 5;
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 767px) {
+
+    .wm-hero-aurora {
+
+        opacity: 0.40;
+
+        filter: blur(46px);
+
+    }
+
+
+    .wm-hero-perspective-grid {
+
+        opacity: 0.10;
+
+        bottom: -32%;
+
+        height: 65%;
+
+        background-size:
+            48px 48px;
+
+    }
+
+
+    /*
+     Cursor light unnecessary on touch devices.
+    */
+
+    .wm-hero-cursor-glow {
+
+        display: none;
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   REDUCED MOTION
+--------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .wm-hero-aurora,
+    .wm-hero-perspective-grid {
+
+        animation: none !important;
+
+    }
+
+}
+
+
+/* =========================================================
+   BITMINT LAB — PREMIUM MOTION FOOTER
+   Neural Mesh + Aurora + Cursor Glow + Giant Brand Watermark
+========================================================= */
+
+
+/* ---------------------------------------------------------
+   FOOTER DEPTH / STACK
+--------------------------------------------------------- */
+
+.wm-footer {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+
+/*
+ * Thin illuminated top divider.
+ */
+
+.wm-footer::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 1px;
+
+    z-index: 8;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(0, 208, 132, 0.16) 18%,
+            rgba(97, 235, 195, 0.48) 50%,
+            rgba(0, 208, 132, 0.16) 82%,
+            transparent 100%
+        );
+}
+
+
+/*
+ * Traveling light running across footer top.
+ */
+
+.wm-footer::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -18%;
+
+    width: 18%;
+    height: 1px;
+
+    z-index: 9;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(160, 255, 224, 0.95),
+            transparent
+        );
+
+    filter:
+        drop-shadow(
+            0 0 5px
+            rgba(0, 208, 132, 0.55)
+        );
+
+    animation:
+        wmFooterTopPulse
+        12s
+        linear
+        infinite;
+
+}
+
+
+@keyframes wmFooterTopPulse {
+
+    0% {
+        transform:
+            translate3d(
+                0,
+                0,
+                0
+            );
+    }
+
+    45%,
+    100% {
+        transform:
+            translate3d(
+                660%,
+                0,
+                0
+            );
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   BACKGROUND CONTAINER
+--------------------------------------------------------- */
+
+.wm-footer-background {
+
+    overflow: hidden;
+
+}
+
+
+/* ---------------------------------------------------------
+   EXISTING GRID — MAKE IT MORE SUBTLE
+--------------------------------------------------------- */
+
+.wm-footer-grid {
+
+    opacity: 0.12 !important;
+
+    animation:
+        wmFooterGridDrift
+        48s
+        linear
+        infinite;
+
+}
+
+
+@keyframes wmFooterGridDrift {
+
+    from {
+
+        transform:
+            translate3d(
+                0,
+                0,
+                0
+            );
+
+    }
+
+    to {
+
+        transform:
+            translate3d(
+                44px,
+                44px,
+                0
+            );
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   AURORA BACKGROUND
+--------------------------------------------------------- */
+
+.wm-footer-aurora {
+
+    position: absolute;
+
+    inset: -30% -15%;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    opacity: 0.68;
+
+    filter:
+        blur(70px);
+
+    background:
+
+        radial-gradient(
+            ellipse at 12% 72%,
+            rgba(0, 208, 132, 0.12) 0%,
+            rgba(0, 208, 132, 0.035) 32%,
+            transparent 62%
+        ),
+
+        radial-gradient(
+            ellipse at 72% 38%,
+            rgba(42, 199, 221, 0.09) 0%,
+            rgba(42, 199, 221, 0.025) 30%,
+            transparent 60%
+        ),
+
+        radial-gradient(
+            ellipse at 92% 84%,
+            rgba(79, 104, 255, 0.065) 0%,
+            transparent 58%
+        );
+
+    background-size:
+        70% 85%,
+        72% 80%,
+        62% 72%;
+
+    animation:
+        wmFooterAurora
+        32s
+        ease-in-out
+        infinite alternate;
+
+    will-change:
+        transform,
+        background-position;
+
+}
+
+
+@keyframes wmFooterAurora {
+
+    0% {
+
+        background-position:
+            0% 50%,
+            100% 20%,
+            90% 100%;
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        background-position:
+            12% 65%,
+            82% 38%,
+            74% 82%;
+
+        transform:
+            scale(1.035);
+
+    }
+
+    100% {
+
+        background-position:
+            4% 42%,
+            92% 54%,
+            84% 68%;
+
+        transform:
+            scale(1.07);
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   EXISTING GLOW ENHANCEMENT
+--------------------------------------------------------- */
+
+.wm-footer-glow {
+
+    opacity: 0.72;
+
+    animation:
+        wmFooterGlowBreath
+        11s
+        ease-in-out
+        infinite alternate;
+
+}
+
+
+@keyframes wmFooterGlowBreath {
+
+    from {
+
+        transform:
+            scale(0.94);
+
+        opacity:
+            0.48;
+
+    }
+
+    to {
+
+        transform:
+            scale(1.10);
+
+        opacity:
+            0.78;
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   NEURAL CANVAS
+--------------------------------------------------------- */
+
+.wm-footer-neural-canvas {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 2;
+
+    display: block;
+
+    pointer-events: none;
+
+    opacity: 0.40;
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.88) 35%,
+            rgba(0, 0, 0, 0.95)
+        );
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.88) 35%,
+            rgba(0, 0, 0, 0.95)
+        );
+
+}
+
+
+/* ---------------------------------------------------------
+   CURSOR REACTIVE MINT LIGHT
+--------------------------------------------------------- */
+
+.wm-footer-cursor-glow {
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 360px;
+    height: 360px;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    transform:
+
+        translate3d(
+            calc(
+                var(
+                    --wm-footer-cursor-x,
+                    -1000px
+                ) - 50%
+            ),
+            calc(
+                var(
+                    --wm-footer-cursor-y,
+                    -1000px
+                ) - 50%
+            ),
+            0
+        );
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(0, 208, 132, 0.10) 0%,
+            rgba(0, 208, 132, 0.038) 34%,
+            rgba(54, 199, 218, 0.016) 52%,
+            transparent 72%
+        );
+
+    filter:
+        blur(9px);
+
+    transition:
+        opacity
+        0.45s
+        ease;
+
+    will-change:
+        transform,
+        opacity;
+
+}
+
+
+.wm-footer:hover
+.wm-footer-cursor-glow {
+
+    opacity: 1;
+
+}
+
+
+/* ---------------------------------------------------------
+   ACTUAL FOOTER CONTENT
+--------------------------------------------------------- */
+
+.wm-footer-container {
+
+    position: relative;
+
+    z-index: 5;
+
+}
+
+
+/* ---------------------------------------------------------
+   FOOTER LINK MICRO INTERACTION
+--------------------------------------------------------- */
+
+.wm-footer-column li a {
+
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 0;
+
+    transition:
+
+        color
+        0.28s
+        ease,
+
+        transform
+        0.28s
+        ease;
+
+}
+
+
+.wm-footer-column li a::before {
+
+    content: "";
+
+    width: 0;
+
+    height: 1px;
+
+    margin-right: 0;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #00d084,
+            #72edb6
+        );
+
+    opacity: 0;
+
+    transition:
+
+        width
+        0.28s
+        ease,
+
+        margin-right
+        0.28s
+        ease,
+
+        opacity
+        0.28s
+        ease;
+
+}
+
+
+.wm-footer-column li a:hover {
+
+    padding-left: 0 !important;
+
+    color:
+        #82efbd;
+
+    transform:
+        translateX(3px);
+
+}
+
+
+.wm-footer-column li a:hover::before {
+
+    width: 12px;
+
+    margin-right: 6px;
+
+    opacity: 1;
+
+}
+
+
+/* ---------------------------------------------------------
+   SOCIAL ICON PREMIUM MOTION
+--------------------------------------------------------- */
+
+.wm-footer-social-links a {
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+
+        transform
+        0.32s
+        cubic-bezier(
+            .2,
+            .75,
+            .3,
+            1
+        ),
+
+        border-color
+        0.32s
+        ease,
+
+        background
+        0.32s
+        ease,
+
+        box-shadow
+        0.32s
+        ease;
+
+}
+
+
+.wm-footer-social-links a:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 10px 28px
+        rgba(0, 208, 132, 0.16);
+
+}
+
+
+/* ---------------------------------------------------------
+   FOOTER BOTTOM DIVIDER
+--------------------------------------------------------- */
+
+.wm-footer-bottom {
+
+    position: relative;
+
+    z-index: 7;
+
+    border-top-color:
+        rgba(
+            128,
+            235,
+            196,
+            0.13
+        );
+
+}
+
+
+/* ---------------------------------------------------------
+   GIANT BRAND WATERMARK
+   Bizfy-inspired oversized typography
+--------------------------------------------------------- */
+
+.wm-footer-watermark {
+    position: absolute;
+
+    left: 50%;
+    bottom: -0.18em;
+
+    width: 130vw;
+
+    z-index: 1;
+
+    transform: translateX(-50%);
+
+    color: rgba(230, 245, 241, 0.045);
+
+    font-size: clamp(
+        160px,
+        24vw,
+        460px
+    );
+
+    font-weight: 900;
+    line-height: 0.72;
+
+    letter-spacing: -0.075em;
+
+    text-align: center;
+    white-space: nowrap;
+
+    pointer-events: none;
+    user-select: none;
+}
+
+@media (max-width: 767px) {
+
+    .wm-footer-watermark {
+        justify-content: center;
+        text-align: center;
+
+        font-size: clamp(
+            72px,
+            21vw,
+            135px
+        );
+
+        margin-bottom: -0.10em;
+    }
+
+}
+
+@keyframes wmFooterWatermarkBreath {
+
+    from {
+
+        transform:
+            translate3d(
+                -0.4%,
+                0,
+                0
+            );
+
+    }
+
+    to {
+
+        transform:
+            translate3d(
+                0.8%,
+                0,
+                0
+            );
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   RESPONSIVE
+--------------------------------------------------------- */
+
+@media (
+    max-width: 991px
+) {
+
+    .wm-footer-watermark {
+
+        margin-top:
+            25px;
+
+        font-size:
+
+            clamp(
+                88px,
+                19vw,
+                190px
+            );
+
+    }
+
+}
+
+
+@media (
+    max-width: 767px
+) {
+
+    .wm-footer-neural-canvas {
+
+        opacity:
+            0.24;
+
+    }
+
+
+    .wm-footer-aurora {
+
+        opacity:
+            0.48;
+
+    }
+
+
+    .wm-footer-cursor-glow {
+
+        display:
+            none;
+
+    }
+
+
+    .wm-footer-watermark {
+
+        width:
+            calc(
+                100vw - 8px
+            );
+
+        margin-left:
+            calc(
+                50% - 50vw + 4px
+            );
+
+        margin-bottom:
+            -0.14em;
+
+        font-size:
+
+            clamp(
+                74px,
+                22vw,
+                145px
+            );
+
+        line-height:
+            0.82;
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   ACCESSIBILITY
+--------------------------------------------------------- */
+
+@media (
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .wm-footer::after,
+
+    .wm-footer-grid,
+
+    .wm-footer-aurora,
+
+    .wm-footer-glow,
+
+    .wm-footer-watermark {
+
+        animation:
+            none !important;
+
+    }
+
+}
