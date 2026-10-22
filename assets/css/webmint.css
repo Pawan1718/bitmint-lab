@@ -10470,3 +10470,47 @@ a.wm-contact-method:hover .wm-contact-method-arrow {
 .wm-contact-method-phone .wm-contact-method-icon { background:linear-gradient(135deg,#3c8fff,#096bd8); }
 .wm-about-section, .wm-contact-section, .wm-final-cta { background:linear-gradient(145deg,#f4fbfa 0%,#fff 48%,#f3f7ff 100%); }
 .wm-contact-method:focus-visible, .wm-header-btn:focus-visible, .wm-contact-submit:focus-visible { outline:3px solid #096bd8; outline-offset:3px; }
+
+
+/* === Bitmint Lab | minimal brand design system v2 === */
+:root {
+  --wm-primary:#096bd8;
+  --wm-primary-dark:#0753ac;
+  --wm-secondary:#008f85;
+  --wm-dark:#0c1d36;
+  --wm-text:#46576c;
+  --wm-muted:#617184;
+  --wm-bg:#f7f9fc;
+  --wm-border:#e4ebf2;
+  --wm-radius:16px;
+}
+body { color:var(--wm-dark); font-family:"Muli",system-ui,-apple-system,"Segoe UI",sans-serif; }
+h1,h2,h3,h4,h5,h6 { font-family:"Muli",system-ui,-apple-system,"Segoe UI",sans-serif; letter-spacing:-.025em; }
+.wm-navbar { background:rgba(255,255,255,.97); border-bottom:1px solid var(--wm-border); box-shadow:0 4px 22px rgba(12,29,54,.035); }
+.wm-main-menu #navigation > li > a.active { color:var(--wm-primary-dark); }
+.wm-header-btn { border-radius:10px; box-shadow:none; }
+.wm-header-btn:hover { box-shadow:0 8px 20px rgba(9,107,216,.15); }
+.wm-hero { background:linear-gradient(135deg,#fff 0%,#f5f9ff 100%); }
+.wm-about-section,.wm-contact-section,.wm-final-cta { background:linear-gradient(135deg,#fff 0%,#f7f9fc 100%); }
+.wm-about-glow,.wm-contact-glow,.wm-final-cta-glow { opacity:.22; }
+.wm-about-grid,.wm-contact-grid,.wm-final-cta-grid { opacity:.12; }
+.wm-product-card,.wm-process-card,.wm-contact-form-wrapper,.wm-contact-method {
+  border-color:var(--wm-border);
+  box-shadow:0 8px 28px rgba(12,29,54,.045);
+}
+.wm-product-card,.wm-process-card { border-radius:var(--wm-radius); }
+.wm-product-card:hover,.wm-process-card:hover { box-shadow:0 14px 32px rgba(12,29,54,.09); }
+.wm-contact-method:hover { box-shadow:0 12px 26px rgba(12,29,54,.09); }
+.wm-contact-heading h2,.wm-about-heading h2 { letter-spacing:-.035em; }
+.wm-footer { background:#0c1d36; }
+.wm-footer-watermark { opacity:.38; }
+.wm-footer-brand > p,.wm-footer-contact-list a,.wm-footer-contact-list span { color:#d0dbe8; }
+.wm-contact-submit { border-radius:10px; }
+:where(a,button,input,textarea,select):focus-visible { outline:2px solid var(--wm-primary); outline-offset:3px; }
+@media (max-width:767px) {
+  .wm-about-section,.wm-contact-section,.wm-final-cta { padding-top:72px; padding-bottom:72px; }
+  .wm-product-card,.wm-process-card { padding:22px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .wm-product-card,.wm-process-card,.wm-contact-method { transition:none; }
+}
