@@ -10514,3 +10514,63 @@ h1,h2,h3,h4,h5,h6 { font-family:"Muli",system-ui,-apple-system,"Segoe UI",sans-s
 @media (prefers-reduced-motion:reduce) {
   .wm-product-card,.wm-process-card,.wm-contact-method { transition:none; }
 }
+
+
+/* Bitmint Lab — mobile-first minimal responsive refinement */
+html,body { max-width:100%; }
+body { overflow-x:clip; }
+img,video,svg,canvas { max-width:100%; }
+@media (max-width:991px) {
+  :root { --wm-header-height:72px; }
+  .wm-header-container { padding-inline:20px; }
+  .wm-navbar,.wm-header.wm-header-scrolled .wm-navbar { min-height:72px; }
+  .wm-mobile-menu-wrapper { min-height:72px; }
+  .wm-logo-image,.wm-header.wm-header-scrolled .wm-logo-image { width:184px; height:auto; }
+  .wm-hero { min-height:auto; padding:72px 0 76px; }
+  .wm-hero-content { max-width:100%; padding-right:0; }
+  .wm-products-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+  .wm-products-grid > .wm-product-card { grid-column:auto; }
+  .wm-contact-layout { grid-template-columns:1fr; }
+  .wm-contact-form-wrapper { width:100%; }
+  .wm-footer-main { gap:28px; padding:55px 0 40px; }
+}
+@media (max-width:767px) {
+  :root { --wm-header-height:68px; }
+  .wm-navbar,.wm-header.wm-header-scrolled .wm-navbar { min-height:68px; }
+  .wm-mobile-menu-wrapper { min-height:68px; }
+  .wm-header-container { padding-inline:16px; }
+  .wm-logo-image,.wm-header.wm-header-scrolled .wm-logo-image { width:min(174px,100%); }
+  .wm-hero { padding:54px 0 60px; }
+  .wm-hero-content { padding:0; }
+  .wm-hero-content h1 { font-size:clamp(34px,8vw,48px); line-height:1.15; letter-spacing:-.035em; }
+  .wm-hero-content p { font-size:15px; line-height:1.7; }
+  .wm-products-grid { grid-template-columns:1fr; gap:16px; }
+  .wm-products-grid > .wm-product-card { grid-column:1/-1; min-height:auto; padding:22px; }
+  .wm-contact-info { display:grid; grid-template-columns:1fr; gap:12px; }
+  .wm-contact-method { min-height:76px; padding:15px; gap:12px; }
+  .wm-contact-form-wrapper { border-radius:18px; padding:22px 18px; }
+  .wm-form-row { grid-template-columns:1fr; gap:0; }
+  .wm-footer-main { grid-template-columns:repeat(2,minmax(0,1fr)); gap:26px 18px; padding-top:48px; }
+  .wm-footer-brand { grid-column:1/-1; }
+  .wm-footer-logo img { width:min(210px,100%); }
+  .wm-footer-watermark { opacity:.14; }
+  .wm-about-section,.wm-contact-section,.wm-final-cta { padding-block:68px; }
+  .wm-about-heading h2,.wm-contact-heading h2 { font-size:clamp(31px,7vw,42px); line-height:1.15; letter-spacing:-.03em; }
+  .wm-about-heading p,.wm-contact-heading p { font-size:15px; line-height:1.7; }
+  .wm-main-menu a,.wm-footer-column a { overflow-wrap:anywhere; }
+}
+@media (max-width:420px) {
+  .wm-header-container { padding-inline:12px; }
+  .wm-logo-image,.wm-header.wm-header-scrolled .wm-logo-image { width:min(154px,100%); }
+  .wm-hero { padding:42px 0 52px; }
+  .wm-product-card,.wm-process-card { padding:18px; }
+  .wm-footer-main { grid-template-columns:1fr 1fr; gap:22px 12px; }
+  .wm-contact-method-icon { width:44px; height:44px; flex-basis:44px; }
+}
+@media (max-width:340px) {
+  .wm-logo-image,.wm-header.wm-header-scrolled .wm-logo-image { width:135px; }
+  .wm-footer-main { grid-template-columns:1fr; }
+}
+@media (hover:none) {
+  .wm-product-card:hover,.wm-process-card:hover,.wm-contact-method:hover { transform:none; }
+}
