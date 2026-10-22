@@ -1825,3 +1825,5 @@
     }
 
 }
+/* Subtle footer watermark: keep navigation and contact text legible. */
+.wm-footer-watermark { color:rgba(230,245,241,.022); }
