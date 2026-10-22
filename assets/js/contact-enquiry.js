@@ -3,6 +3,12 @@
   "use strict";
   const form = document.getElementById("wm-contact-form");
   if (!form) return;
+  document.querySelectorAll("[data-product-enquiry]").forEach(function (link) {
+    link.addEventListener("click", function () {
+      const select = form.querySelector('[name="requirementType"]');
+      if (select) select.value = link.getAttribute("data-product-enquiry");
+    });
+  });
   form.addEventListener("submit", function (event) {
     event.preventDefault();
     if (!form.reportValidity()) return;
