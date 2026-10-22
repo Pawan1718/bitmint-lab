@@ -10434,3 +10434,22 @@ a.wm-contact-method:hover .wm-contact-method-arrow {
     }
 
 }
+
+
+/* Bitmint Lab brand integration — October 2026 */
+.wm-logo a { gap: 0; max-width: 100%; }
+.wm-logo-image { display:block; width: min(230px, 100%); max-width:100%; height:auto; aspect-ratio: 3.37 / 1; object-fit:contain; }
+.wm-header.wm-header-scrolled .wm-logo-image { height:auto; width:min(210px,100%); }
+.wm-footer-logo { display:inline-flex; max-width:100%; }
+.wm-footer-logo img { display:block; width:min(240px,100%); height:auto; max-width:100%; border-radius:0; object-fit:contain; }
+.wm-footer-brand > p { color:rgba(255,255,255,.78); font-size:13px; line-height:1.75; }
+.wm-footer-contact-list a, .wm-footer-contact-list span { color:rgba(255,255,255,.82); font-size:12px; line-height:1.6; }
+.wm-footer-column a { color:rgba(255,255,255,.8); }
+.wm-footer-column a:hover, .wm-footer-contact-list a:hover { color:#fff; }
+.wm-contact-layout { align-items:start; gap:clamp(18px,2.5vw,32px); }
+.wm-contact-form-wrapper { min-width:0; }
+.wm-contact-method-content, .wm-form-group { min-width:0; }
+.wm-contact-section { scroll-margin-top:90px; }
+@media (max-width:1199px) { .wm-logo-image { width:min(205px,100%); } .wm-header.wm-header-scrolled .wm-logo-image { width:min(195px,100%); } }
+@media (max-width:575px) { .wm-logo-image, .wm-header.wm-header-scrolled .wm-logo-image { width:min(170px,100%); height:auto; } .wm-footer-logo img { width:min(210px,100%); } .wm-contact-form-wrapper { padding:22px 18px; } .wm-contact-method { padding:16px; } }
+@media (max-width:380px) { .wm-logo-image, .wm-header.wm-header-scrolled .wm-logo-image { width:min(150px,100%); } }
