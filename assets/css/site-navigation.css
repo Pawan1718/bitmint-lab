@@ -34,3 +34,7 @@
 @media(prefers-reduced-motion:reduce){.unav-header *{scroll-behavior:auto!important}}
 html{scroll-padding-top:90px}
 body:has(>.unav-header){padding-top:0!important}
+
+/* Explicit closed state wins against display:flex and keeps mobile menu hidden. */
+.unav-mobile:not([open])>nav{display:none}
+.unav-products>summary.unav-selected{color:#84e4f3}
