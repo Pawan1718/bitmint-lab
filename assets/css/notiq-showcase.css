@@ -62,3 +62,27 @@
 .nq-feature-grid .pm-feature>i{display:none}
 @media(max-width:900px){.pm-hero .pm-layout{grid-template-columns:1fr;gap:30px}.nq-feature-grid .pm-feature{min-height:0}}
 @media(prefers-reduced-motion:reduce){.nq-feature-grid .pm-feature,.nq-hero-visual .nq-preview-trigger img{transition:none}}
+
+
+/* Text-free marketing imagery used beside semantic HTML copy */
+.nq-hero-marketing{padding:0;overflow:hidden;border-radius:20px;background:#f6fafb}
+.nq-hero-marketing>img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.nq-story-section{background:#fff;padding:76px 0}
+.nq-story-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center}
+.nq-story-copy h2,.nq-usecases h2{font:600 clamp(31px,3.4vw,43px)/1.19 "Oswald",sans-serif;margin:14px 0 18px}
+.nq-story-copy p{font-size:16px;color:#617487;line-height:1.8;margin:0 0 23px}
+.nq-inline-link{display:inline-flex;align-items:center;gap:12px;font-size:14px;font-weight:800;color:#514bfa}
+.nq-inline-link:hover{color:#362fc7}
+.nq-story-image{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:17px;border:1px solid #e7e9f3;box-shadow:0 16px 36px rgba(24,42,60,.09)}
+.nq-usecases{background:#f8fafe;padding:78px 0}
+.nq-usecase-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:32px}
+.nq-usecase-card{overflow:hidden;background:#fff;border:1px solid #e1e7ef;border-radius:16px;box-shadow:0 9px 25px rgba(15,33,65,.05);transition:transform .2s ease,box-shadow .2s ease}
+.nq-usecase-card:hover{transform:translateY(-4px);box-shadow:0 17px 35px rgba(15,33,65,.11)}
+.nq-usecase-card>img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.nq-usecase-copy{padding:23px 24px 26px}
+.nq-usecase-copy>span{display:block;color:#13877e;text-transform:uppercase;letter-spacing:.09em;font-size:11px;font-weight:800}
+.nq-usecase-copy h3{font-size:18px;margin:11px 0 10px;line-height:1.4}
+.nq-usecase-copy p{font-size:13px;line-height:1.7;color:#64758a;margin:0}
+@media(max-width:900px){.nq-story-grid{grid-template-columns:1fr;gap:26px}.nq-usecase-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.nq-story-section,.nq-usecases{padding:52px 0}.nq-usecase-grid{grid-template-columns:1fr}.nq-story-copy p{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.nq-usecase-card{transition:none}}
