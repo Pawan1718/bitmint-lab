@@ -32,3 +32,29 @@
 .na-footer a:hover{text-decoration:underline}
 @media(max-width:800px){.na-article-list{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.na-article-list{grid-template-columns:1fr}.na-nav{align-items:flex-start;flex-direction:column}.na-nav nav{gap:14px}.na-blog{padding-top:40px}.na-article{padding-top:36px}}
+
+/* Long-form WhatsApp API guide */
+.na-longform{max-width:850px}
+.na-longform .na-article-hero{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border:1px solid #e3eaf1;border-radius:18px;margin:28px 0}
+.na-longform>p:not(.na-lead):not(.na-editor-note){font-size:16px;line-height:1.9;color:#485e70}
+.na-longform section h3{font-size:19px;line-height:1.45;margin:23px 0 10px}
+.na-longform section a{color:#514bfa;text-decoration:underline;text-underline-offset:3px}
+.na-longform .na-table-scroll{overflow-x:auto;margin:22px 0}
+.na-comparison{width:100%;border-collapse:collapse;font-size:14px;min-width:470px}
+.na-comparison caption{text-align:left;color:#62758a;font-weight:700;margin-bottom:9px}
+.na-comparison th,.na-comparison td{text-align:left;padding:14px;border:1px solid #dde6f0;vertical-align:top;line-height:1.55}
+.na-comparison thead th{background:#eef1ff;color:#263450}
+.na-comparison tbody th{background:#fafbff}
+.na-checklist{list-style:none;padding:0;margin:20px 0;display:grid;gap:11px}
+.na-checklist li{border:1px solid #e1e8f0;border-radius:10px;padding:12px 15px 12px 42px;position:relative;line-height:1.6;color:#485e70}
+.na-checklist li:before{content:"✓";position:absolute;left:15px;color:#1b9985;font-weight:800}
+.na-early-access{border-radius:18px;padding:26px;background:#f0f0ff;border:1px solid #dcdafe;margin:35px 0}
+.na-early-access strong{font-size:23px;color:#27364f}
+.na-early-access p{color:#4d6075;line-height:1.8}
+.na-early-access>a{display:inline-block;background:#514bfa;color:white!important;text-decoration:none!important;border-radius:9px;padding:13px 18px;font-weight:800}
+.na-early-access>a:hover{background:#3933c6}
+.na-early-access small{display:block;color:#62758a;margin-top:15px;line-height:1.6}
+.na-final-cta{background:#f7fafc;border-radius:18px;padding:25px}
+.na-editor-note{font-size:13px;color:#708297;line-height:1.7}
+.na-featured-card{border-color:#b8b4ff;background:#fdfdff}
+@media(max-width:600px){.na-longform .na-article-hero{margin:18px 0}.na-early-access{padding:20px}.na-final-cta{padding:18px}}
