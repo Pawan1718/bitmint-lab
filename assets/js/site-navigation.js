@@ -3,10 +3,6 @@
  "use strict";
  const header=document.querySelector(".unav-header");
  if(!header)return;
- const isNested=window.location.pathname.startsWith("/products/")||window.location.pathname.startsWith("/blog/")||window.location.pathname.startsWith("/tools/");
- const toolsHref=(isNested?"../":"")+"tools/";
- const toolsMenu=function(){const details=document.createElement("details");details.className="unav-products unav-tools";const summary=document.createElement("summary");summary.textContent="Free Tools";const menu=document.createElement("div");menu.className="unav-submenu";[["All Free Tools",toolsHref],["WhatsApp Link Generator",toolsHref+"whatsapp-link-generator.html"],["WhatsApp API Cost Calculator",toolsHref+"whatsapp-api-cost-calculator.html"]].forEach(([label,href])=>{const a=document.createElement("a");a.href=href;a.textContent=label;menu.append(a)});details.append(summary,menu);return details};
- header.querySelectorAll(".unav-desktop,.unav-mobile>nav").forEach(nav=>{const blog=Array.from(nav.children).find(el=>el.tagName==="A"&&el.textContent.trim()==="Blog");const menu=toolsMenu();if(blog)nav.insertBefore(menu,blog);else nav.append(menu)});
  const notice=document.createElement("div");notice.className="unav-announce";notice.setAttribute("role","region");notice.setAttribute("aria-label","NOTIQ early access announcement");const message=document.createElement("span");message.textContent="NOTIQ is preparing for launch — explore early access";const link=document.createElement("a");link.href="https://notiq.bitmintlab.in";link.textContent="Explore NOTIQ →";const close=document.createElement("button");close.type="button";close.textContent="×";close.setAttribute("aria-label","Dismiss announcement");close.addEventListener("click",()=>{notice.remove();document.documentElement.classList.add("unav-announcement-hidden")});notice.append(message,link,close);header.parentNode.insertBefore(notice,header);
  const details=Array.from(header.querySelectorAll("details"));
  const normalize=p=>p.replace(/\/index\.html$/,"/").replace(/\.html$/,"").replace(/\/$/,"/")||"/";
@@ -25,7 +21,6 @@
  if(window.location.pathname.indexOf("/products/")>=0){
    header.querySelectorAll(".unav-products>summary").forEach(s=>s.classList.add("unav-selected"));
  }
- if(window.location.pathname.indexOf("/tools/")>=0){header.querySelectorAll(".unav-tools>summary").forEach(s=>s.classList.add("unav-selected"));}
  if(window.location.pathname.indexOf("/blog/")>=0){
    header.querySelectorAll('a[href]').forEach(a=>{
      const u=new URL(a.getAttribute("href"),window.location.href);
