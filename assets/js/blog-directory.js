@@ -13,13 +13,16 @@ const items=cards.map(card=>{
  const slug=card.querySelector('a[href]')?.getAttribute('href')||'';
  const categoryLabel=categoryName(card.querySelector('.na-category')?.textContent);
  // Product mapping based on content, rather than inferring every blog is for all Bitmint products.
- const productId=slug.includes('ai-assistants-and-business-knowledge')?'mintiq':'notiq';
+ const productIds=slug.includes('ai-assistants-and-business-knowledge')?['general','mintiq']:
+   slug.includes('shared-inbox-for-customer-conversations')?['general','notiq']:
+   ['notiq'];
+ const productId=productIds[productIds.length-1];
  const searchText=normalize([title,desc,categoryLabel,productId].join(' '));
  card.dataset.category=categoryLabel;card.dataset.product=productId;
- return{card,categoryLabel,categoryId:normalize(categoryLabel),productId,searchText};
+ return{card,categoryLabel,categoryId:normalize(categoryLabel),productIds,searchText:searchText+' '+productIds.join(' ')};
 });
 const categories=Array.from(new Set(items.map(x=>x.categoryLabel))).sort((a,b)=>a.localeCompare(b));
-const productLabels=[['all','All Products'],['notiq','NOTIQ'],['mintiq','MintIQ (K-RAG)'],['shala','School ERP'],['crm','CRM'],['hr-lab','HR-Lab'],['lms','LMS'],['business-erp','Business ERP'],['paper-trading','Paper Trading']];
+const productLabels=[['all','All Products'],['general','General'],['notiq','NOTIQ'],['mintiq','MintIQ (K-RAG)'],['shala','School ERP'],['crm','CRM'],['hr-lab','HR-Lab'],['lms','LMS'],['business-erp','Business ERP'],['paper-trading','Paper Trading']];
 let activeCategory='all',activeProduct='all';
 function addPill(container,value,label,kind){
  const button=document.createElement('button');button.type='button';button.className='na-filter-pill';button.textContent=label;button.dataset.value=value;
@@ -38,10 +41,36 @@ function apply(){
  const q=normalize(search.value);
  let visible=0;
  items.forEach(item=>{
-  const match=(!q||item.searchText.includes(q))&&(activeCategory==='all'||item.categoryId===activeCategory)&&(activeProduct==='all'||item.productId===activeProduct);
+  const match=(!q||item.searchText.includes(q))&&(activeCategory==='all'||item.categoryId===activeCategory)&&(activeProduct==='all'||item.productIds.includes(activeProduct));
   item.card.hidden=!match;if(match)visible++;
  });
  count.textContent=visible+' '+(visible===1?'article':'articles')+' found';
+ const headline=document.getElementById('na-blog-dynamic-title');
+ const description=document.getElementById('na-blog-dynamic-description');
+ const productTitles={
+   general:['General Technology & Business Insights','Explore ideas on business technology, customer experience, software and practical digital growth.'],
+   notiq:['NOTIQ — Messaging & Automation Guides','Explore WhatsApp business messaging, customer conversations, automation and NOTIQ product insights.'],
+   mintiq:['MintIQ — AI & Knowledge Insights','Read about knowledge-grounded AI, assistants and smarter business workflows.'],
+   shala:['School ERP — Guides & Insights','Explore school management, academic operations and education technology.'],
+   crm:['CRM — Guides & Insights','Explore customer relationship management, sales workflows and customer engagement.'],
+   'hr-lab':['HR-Lab — Guides & Insights','Read about HR operations, attendance, payroll and employee workflows.'],
+   lms:['LMS — Learning Technology Insights','Explore online learning, course management and education software.'],
+   'business-erp':['Business ERP — Guides & Insights','Explore business operations, resource planning and management systems.'],
+   'paper-trading':['Paper Trading — Guides & Insights','Explore trading education, simulation and market learning.']
+ };
+ const categoryLabel=categories.find(value=>normalize(value)===activeCategory);
+ let title='Ideas, Guides & Insights from Bitmint Lab';
+ let subtitle='Explore practical articles on software products, technology, business operations, AI, marketing and digital growth from Bitmint Lab.';
+ if(activeProduct!=='all'){
+   [title,subtitle]=productTitles[activeProduct]||[title,subtitle];
+ }
+ if(categoryLabel){
+   title=(activeProduct==='all'?categoryLabel+' — Guides & Insights':title+' · '+categoryLabel);
+   subtitle='Browse '+categoryLabel.toLowerCase()+' articles'+(activeProduct==='all'?' across Bitmint Lab.':' for this topic or product.');
+ }
+ if(headline)headline.textContent=title;
+ if(description)description.textContent=subtitle;
+
  empty.hidden=visible!==0;
  syncPills();
 }
