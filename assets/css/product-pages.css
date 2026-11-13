@@ -57,3 +57,18 @@
 .pm-desktop-links .pm-menu-list{background:#19273e;border-color:#354762}
 .pm-desktop-links .pm-menu-list a{color:#f1f4ff}
 @media(max-width:950px){.pm-site-nav{min-height:72px}.pm-site-brand img{width:190px;height:58px}}
+
+/* Unified multi-page footer */
+.pm-footer-expanded{background:#111c30;color:#d9e2ef;padding:60px 0 22px}
+.pm-footer-grid{display:grid;grid-template-columns:1.35fr repeat(3,minmax(0,1fr));gap:34px}
+.pm-footer-grid>div{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.pm-footer-grid h2{color:white;font-family:"Muli",sans-serif;font-size:14px;letter-spacing:.02em;margin:0 0 7px}
+.pm-footer-grid a{color:#d9e2ef;line-height:1.5;font-size:13px}
+.pm-footer-grid a:hover,.pm-footer-grid a:focus-visible{color:#79e0f3}
+.pm-footer-about img{height:auto;max-width:190px;object-fit:contain;display:block;margin-bottom:9px}
+.pm-footer-about p{color:#bac9da;line-height:1.75;font-size:13px;margin:0 0 8px}
+.pm-footer-bottom{border-top:1px solid #34445d;margin-top:37px;padding-top:20px;display:flex;justify-content:space-between;gap:16px;color:#b8c6d8;font-size:12px}
+.pm-site-header .pm-menu-list a[aria-current="page"],.pm-site-header a[aria-current="page"]{color:#81e5f1}
+.pm-site-header .pm-menu-list a[aria-current="page"]{background:#354667}
+@media(max-width:950px){.pm-footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.pm-footer-grid{grid-template-columns:1fr;gap:29px}.pm-footer-expanded{padding-top:42px}.pm-footer-bottom{flex-direction:column}}
