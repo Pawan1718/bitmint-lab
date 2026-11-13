@@ -22,7 +22,7 @@ const items=cards.map(card=>{
  return{card,categoryLabel,categoryId:normalize(categoryLabel),productIds,searchText:searchText+' '+productIds.join(' ')};
 });
 const categories=Array.from(new Set(items.map(x=>x.categoryLabel))).sort((a,b)=>a.localeCompare(b));
-const productLabels=[['all','All Topics'],['general','General'],['notiq','NOTIQ'],['mintiq','MintIQ (K-RAG)'],['shala','School ERP'],['crm','CRM'],['hr-lab','HR-Lab'],['lms','LMS'],['business-erp','Business ERP'],['paper-trading','Paper Trading']];
+const productLabels=[['all','All Products'],['general','General'],['notiq','NOTIQ'],['mintiq','MintIQ (K-RAG)'],['shala','School ERP'],['crm','CRM'],['hr-lab','HR-Lab'],['lms','LMS'],['business-erp','Business ERP'],['paper-trading','Paper Trading']];
 let activeCategory='all',activeProduct='all';
 function addPill(container,value,label,kind){
  const button=document.createElement('button');button.type='button';button.className='na-filter-pill';button.textContent=label;button.dataset.value=value;
