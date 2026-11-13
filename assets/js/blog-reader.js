@@ -18,7 +18,32 @@ if(!list.children.length)right.hidden=true;
 else {const links=Array.from(list.querySelectorAll('a'));function update(){let selected=links[0];links.forEach(link=>{const el=document.getElementById(link.hash.slice(1));if(el&&el.getBoundingClientRect().top<175)selected=link});links.forEach(link=>{if(link===selected)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current')})}window.addEventListener('scroll',update,{passive:true});update()}
 const box=document.createElement('div');box.className='na-ai-summary';const heading=document.createElement('strong');heading.textContent='Summarize this article with AI';const note=document.createElement('p');note.textContent='Open this article with your chosen AI tool. Article text is included in the prompt; review the result for accuracy.';const actions=document.createElement('div');actions.className='na-ai-actions';const state=document.createElement('span');state.className='na-ai-state';state.setAttribute('role','status');state.setAttribute('aria-live','polite');
 function getPrompt(){const title=article.querySelector('h1')?.textContent.trim()||document.title;const text=Array.from(article.querySelectorAll('.na-lead,section h2,section h3,section p,section li')).map(x=>x.textContent.trim()).filter(Boolean).join('\n').slice(0,10500);return 'Summarize this article into five concise key takeaways and practical steps. Identify important caveats. Use only the supplied source and do not invent facts.\nArticle: '+title+'\nSource: '+location.href.split('#')[0]+'\n\n'+text}
-const services=[{label:'ChatGPT',make:p=>'https://chatgpt.com/?q='+encodeURIComponent(p)},{label:'Perplexity',make:p=>'https://www.perplexity.ai/search?q='+encodeURIComponent(p)}];
-services.forEach(s=>{const a=document.createElement('a');a.className='na-ai-service';a.textContent=s.label+' ↗';a.href=s.make(getPrompt());a.target='_blank';a.rel='noopener noreferrer';a.addEventListener('click',()=>{a.href=s.make(getPrompt())});actions.append(a)});
-const copy=document.createElement('button');copy.className='na-ai-copy';copy.type='button';copy.textContent='Copy prompt';copy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(getPrompt());state.textContent='Prompt copied';}catch{state.textContent='Unable to copy automatically.'}});actions.append(copy);box.append(heading,note,actions,state);const insertAfter=article.querySelector('.na-lead')||article.querySelector('.na-article-hero')||article.querySelector('h1');insertAfter?.insertAdjacentElement('afterend',box);
+const providers=[
+{label:'ChatGPT',icon:'openai',url:p=>'https://chatgpt.com/?q='+encodeURIComponent(p)},
+{label:'Perplexity',icon:'perplexity',url:p=>'https://www.perplexity.ai/search?q='+encodeURIComponent(p)},
+{label:'Gemini',icon:'googlegemini',url:()=> 'https://gemini.google.com/app'},
+{label:'Claude',icon:'claude',url:()=> 'https://claude.ai/new'}
+];
+const copyText=async text=>{try{await navigator.clipboard.writeText(text);return true}catch{return false}};
+providers.forEach(provider=>{
+const a=document.createElement('a');a.className='na-ai-service';a.target='_blank';a.rel='noopener noreferrer';a.href=provider.url(getPrompt());a.setAttribute('aria-label','Summarize with '+provider.label+' (new tab)');
+const icon=document.createElement('img');icon.src='https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/'+provider.icon+'.svg';icon.alt='';icon.width=19;icon.height=19;icon.loading='lazy';icon.onerror=()=>{icon.style.display='none'};a.append(icon,document.createTextNode(provider.label));a.addEventListener('click',async()=>{a.href=provider.url(getPrompt());if(provider.label==='Gemini'||provider.label==='Claude'){const ok=await copyText(getPrompt());state.textContent=ok?'Prompt copied. Paste it into '+provider.label+'.':'Copy the prompt manually to use '+provider.label+'.';}});actions.append(a);
+});
+function getMarkdown(){
+ const lines=['# '+(article.querySelector('h1')?.textContent.trim()||document.title),'','Source: '+location.href.split('#')[0],''];
+ const source=article.querySelectorAll('.na-lead,section h2,section h3,section p,section ul li,section ol li');
+ source.forEach(el=>{const value=el.textContent.replace(/\\s+/g,' ').trim();if(!value)return;
+ if(el.matches('h2'))lines.push('## '+value,'');
+ else if(el.matches('h3'))lines.push('### '+value,'');
+ else if(el.matches('li'))lines.push('- '+value);
+ else lines.push(value,'');
+ });
+ return lines.join('\\n');
+}
+const makeCopy=(label,content,success)=>{
+ const button=document.createElement('button');button.className='na-ai-copy';button.type='button';button.textContent=label;button.addEventListener('click',async()=>{const ok=await copyText(content());state.textContent=ok?success:'Copy unavailable. Please allow clipboard access.'});actions.append(button);
+};
+makeCopy('Copy Prompt',getPrompt,'AI summary prompt copied.');
+makeCopy('Copy Markdown',getMarkdown,'Article Markdown copied.');
+box.append(heading,note,actions,state);const insertAfter=article.querySelector('.na-lead')||article.querySelector('.na-article-hero')||article.querySelector('h1');insertAfter?.insertAdjacentElement('afterend',box);
 })();
