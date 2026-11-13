@@ -1,0 +1,24 @@
+/* Product concept pages: CSS-only workflow imagery where verified screenshots are unavailable */
+.pc-visual{border:1px solid color-mix(in srgb,var(--ps-brand) 25%,white);border-radius:21px;background:linear-gradient(145deg,#fff,color-mix(in srgb,var(--ps-brand) 8%,#fff));box-shadow:0 20px 50px #25354f16;padding:16px;overflow:hidden}
+.pc-window-bar{display:flex;align-items:center;gap:6px;padding:9px 10px 16px;border-bottom:1px solid #e4e9f3}
+.pc-window-bar i{width:9px;height:9px;display:block;border-radius:50%;background:#f28a96}
+.pc-window-bar i:nth-child(2){background:#ffc979}.pc-window-bar i:nth-child(3){background:#60d7ae}
+.pc-window-bar span{font-size:10px;letter-spacing:.12em;font-weight:800;color:#718399;margin-left:auto}
+.pc-window-body{padding:22px 18px}
+.pc-visual-icon{width:63px;height:63px;margin:0 auto 23px;border-radius:20px;display:grid;place-items:center;color:white;background:var(--ps-brand);font-size:27px;box-shadow:0 10px 20px color-mix(in srgb,var(--ps-brand) 27%,transparent)}
+.pc-workflow{display:grid;gap:10px}
+.pc-step{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid #e6eaf2;border-radius:13px;padding:13px 16px;box-shadow:0 4px 11px #26364b0b;font-size:13px}
+.pc-step-number{display:grid;place-items:center;width:28px;height:28px;border-radius:8px;flex:none;background:color-mix(in srgb,var(--ps-brand) 13%,white);color:var(--ps-brand);font-weight:800}
+.pc-step strong{font-weight:800}
+.pc-step>.fa-arrow-down{margin-left:auto;font-size:12px;color:#8ba1b0}
+.pc-widgets{display:flex;flex-wrap:wrap;gap:10px;margin-top:19px}
+.pc-widgets span{display:inline-flex;gap:7px;align-items:center;background:white;color:#50647a;padding:9px 11px;border-radius:9px;font-size:11px;font-weight:700}
+.pc-widgets i{color:var(--ps-brand)}
+.pc-features{padding:76px 0 86px}
+.pc-features h2{font:600 clamp(30px,3.7vw,44px)/1.2 "Oswald",sans-serif;margin:11px 0 13px}
+.pc-feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:19px;margin-top:27px}
+.pc-feature{padding:28px;border:1px solid #e1e8f0;border-radius:17px;background:#fff;box-shadow:0 7px 20px #25364b0a}
+.pc-feature-icon{width:49px;height:49px;display:grid;place-items:center;color:var(--ps-brand);background:color-mix(in srgb,var(--ps-brand) 12%,white);border-radius:13px;font-size:20px}
+.pc-feature h3{margin:19px 0 10px;font-size:20px}
+.pc-feature p{color:#657789;line-height:1.75;font-size:14px;margin:0}
+@media(max-width:600px){.pc-feature-grid{grid-template-columns:1fr}.pc-features{padding:52px 0}.pc-window-body{padding:14px 6px}.pc-step{padding:11px;font-size:12px}}
