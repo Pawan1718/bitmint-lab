@@ -25,3 +25,15 @@
 .na-ai-service,.na-ai-copy{gap:8px;min-height:43px;line-height:1.4;padding:10px 13px;white-space:nowrap}
 .na-ai-service img{width:19px;height:19px;display:block;object-fit:contain;flex:none}
 @media(max-width:820px){.na-reader-layout .na-ai-summary{padding:19px;margin:28px 0}.na-reader-layout .na-article section{margin:34px 0}}
+
+/* Editorial gutters: deliberately separate sticky rails from reading column. */
+@media(min-width:1500px){
+  .na-reader-layout{box-sizing:border-box;width:min(100%,1690px);max-width:1690px;grid-template-columns:250px minmax(0,790px) 240px;column-gap:clamp(82px,5.5vw,105px);justify-content:center;padding:58px 34px 100px}
+  .na-reader-left,.na-reader-right{top:148px}
+}
+@media(min-width:1261px) and (max-width:1499px){
+  .na-reader-layout{box-sizing:border-box;width:100%;max-width:1499px;grid-template-columns:minmax(190px,230px) minmax(0,780px) minmax(180px,215px);column-gap:clamp(38px,3.8vw,58px);justify-content:center;padding:49px 30px 92px}
+}
+@media(min-width:821px) and (max-width:1260px){
+  .na-reader-layout{column-gap:clamp(35px,4.5vw,58px);padding-inline:clamp(24px,3vw,38px)}
+}
