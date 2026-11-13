@@ -20,6 +20,12 @@
  if(window.location.pathname.indexOf("/products/")>=0){
    header.querySelectorAll(".unav-products>summary").forEach(s=>s.classList.add("unav-selected"));
  }
+ if(window.location.pathname.indexOf("/blog/")>=0){
+   header.querySelectorAll('a[href]').forEach(a=>{
+     const u=new URL(a.getAttribute("href"),window.location.href);
+     if(normalize(u.pathname)==="/blog/"&&!a.hasAttribute("aria-current"))a.setAttribute("aria-current","location");
+   });
+ }
  function closeAll(){details.forEach(d=>{d.open=false})}
  document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeAll();}});
  document.addEventListener("click",e=>{if(!header.contains(e.target))closeAll()});
@@ -34,7 +40,7 @@
  header.querySelectorAll(".unav-mobile>nav a").forEach(a=>a.addEventListener("click",closeAll));
  if(document.body.querySelector("#home")){
    const ids=["home","custom-solutions","process","about","contact"];
-   const links=anchors.filter(a=>{try{const u=new URL(a.href);return u.pathname===window.location.pathname&&ids.includes(u.hash.slice(1))}catch{return false}});
+   const links=anchors.filter(a=>{try{const u=new URL(a.href);return normalize(u.pathname)===current&&ids.includes(u.hash.slice(1))}catch{return false}});
    function update(){
      let id="home";for(const name of ids){const el=document.getElementById(name);if(el&&el.getBoundingClientRect().top<=160)id=name;}
      links.forEach(a=>{a.removeAttribute("aria-current");if(a.hash==="#"+id)a.setAttribute("aria-current","location")});
