@@ -38,3 +38,22 @@
 .pm-mobile-navigation .pm-menu:not([open]) .pm-menu-list{display:none}
 @media(max-width:1150px){.pm-site-nav{gap:17px;padding:0 20px}.pm-desktop-links{gap:15px;font-size:12px}.pm-site-brand img{width:165px}}
 @media(max-width:950px){.pm-desktop-links,.pm-project-cta{display:none}.pm-mobile-navigation{display:block}.pm-site-nav{min-height:70px}.pm-site-brand img{height:55px;width:185px}}
+
+
+/* Shared dark Bitmint navbar: white wordmark stays legible */
+.pm-site-header{background:#111c30;border-bottom:1px solid #26364e;box-shadow:0 5px 20px rgba(17,28,48,.12)}
+.pm-site-nav{min-height:82px}
+.pm-site-brand img{width:220px;height:66px;object-fit:contain;object-position:left center}
+.pm-desktop-links>a,.pm-desktop-links .pm-menu summary{color:#f6f9ff}
+.pm-site-header .pm-desktop-links>a:hover,.pm-site-header .pm-menu summary:hover{color:#78dfec}
+.pm-project-cta{background:#514bfa;color:#fff!important;border:1px solid #6964fb}
+.pm-project-cta:hover{background:#433ce6}
+.pm-mobile-navigation>summary{color:#f6f9ff}
+.pm-mobile-navigation>nav{background:#17253d;border-color:#34445f}
+.pm-mobile-navigation nav>a,.pm-mobile-navigation .pm-menu>summary{color:#f6f9ff}
+.pm-mobile-navigation .pm-menu-list{background:#1b2941;border:0;box-shadow:none}
+.pm-mobile-navigation .pm-menu-list a{color:#e8ecff}
+.pm-site-header .pm-menu-list a:hover,.pm-site-header .pm-menu-list a:focus-visible{background:#354667;color:#fff}
+.pm-desktop-links .pm-menu-list{background:#19273e;border-color:#354762}
+.pm-desktop-links .pm-menu-list a{color:#f1f4ff}
+@media(max-width:950px){.pm-site-nav{min-height:72px}.pm-site-brand img{width:190px;height:58px}}
