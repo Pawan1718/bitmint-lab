@@ -306,11 +306,13 @@
         backdrop-filter .32s ease;
 }
 .wm-header.wm-header-scrolled .wm-navbar {
-    background: rgba(255, 255, 255, .88);
-    -webkit-backdrop-filter: blur(14px) saturate(135%);
-    backdrop-filter: blur(14px) saturate(135%);
-    border-bottom-color: rgba(23, 40, 61, .08);
-    box-shadow: 0 10px 30px rgba(20, 20, 38, .055);
+    /* Keep the same dark surface as the regular navbar.
+       A white glass surface made the white navigation labels invisible. */
+    background: #111c30;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-bottom-color: #26364e;
+    box-shadow: 0 10px 30px rgba(17, 28, 48, .20);
 }
 
 /* SlickNav: hamburger → X + slide/fade menu + staggered links */

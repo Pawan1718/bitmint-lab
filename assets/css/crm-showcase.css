@@ -1,0 +1,32 @@
+/* CRM — editorial product showcase */
+.crm-hero{background:radial-gradient(ellipse at 85% 20%,#e8fbf9,transparent 48%),linear-gradient(135deg,#f9fbff,#f4f9ff)}
+.crm-hero-layout{display:grid;grid-template-columns:.98fr 1.02fr;gap:44px;align-items:center}
+.crm-hero h1{font-size:clamp(43px,4.8vw,66px);line-height:1.12;max-width:590px}
+.crm-hero .pm-lead{font-size:17px}
+.crm-hero-art{border-radius:20px;overflow:hidden;border:1px solid #dceaf0;box-shadow:0 22px 60px #2449651c;background:white}
+.crm-hero-art img,.crm-feature-image img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.crm-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.crm-chips span{display:inline-flex;align-items:center;gap:7px;padding:9px 11px;border:1px solid #d9e8f1;background:white;border-radius:100px;font-size:12px;font-weight:700;color:#415d72}
+.crm-chips i{color:#16a58c}
+.crm-features{padding:80px 0;background:white}
+.crm-section-heading{max-width:670px;margin-bottom:38px}
+.crm-section-heading h2,.crm-contact h2{font:600 clamp(32px,3.8vw,45px)/1.23 "Oswald",sans-serif;margin:13px 0 12px}
+.crm-section-heading>p,.crm-contact p{color:#657789;font-size:15px;line-height:1.75}
+.crm-feature-row{display:grid;grid-template-columns:1.13fr .87fr;gap:50px;align-items:center;padding:40px 0}
+.crm-feature-row+.crm-feature-row{border-top:1px solid #edf1f5}
+.crm-feature-row.crm-reverse .crm-feature-image{order:2}
+.crm-feature-image{overflow:hidden;border:1px solid #e1e9f3;border-radius:17px;box-shadow:0 14px 36px #243c5a12;background:#f6f9fb}
+.crm-feature-index{font-size:12px;color:#7893a2;font-weight:800;letter-spacing:.12em;display:block;margin-bottom:18px}
+.crm-icon{display:grid;place-items:center;width:49px;height:49px;border-radius:13px;color:#514bfa;background:#eeedff;font-size:20px}
+.crm-feature-content h3{font-size:clamp(24px,3vw,32px);margin:18px 0 14px;line-height:1.24}
+.crm-feature-content p{font-size:15px;color:#5f7485;line-height:1.8;margin:0}
+.crm-feature-label{display:inline-flex;margin-top:22px;padding:10px 14px;background:#f0f8f9;border:1px solid #dcebef;color:#1b706e;border-radius:8px;font-size:12px;font-weight:800}
+.crm-contact{padding:56px 0;background:linear-gradient(110deg,#edf9f8,#f2f1ff)}
+.crm-contact-inner{display:flex;justify-content:space-between;align-items:center;gap:38px}
+.crm-contact h2{max-width:560px}
+.crm-contact p{max-width:640px;margin-bottom:0}
+.crm-contact .pm-btn{flex:none;background:#514bfa}
+.crm-contact .pm-btn:hover{background:#413bd5}
+.crm-related{background:#fafcfd}
+@media(max-width:900px){.crm-hero-layout,.crm-feature-row{grid-template-columns:1fr;gap:26px}.crm-feature-row.crm-reverse .crm-feature-image{order:0}.crm-contact-inner{flex-direction:column;align-items:flex-start}.crm-features{padding:55px 0}}
+@media(max-width:580px){.crm-hero h1{font-size:44px}.crm-hero .pm-lead{font-size:15px}.crm-feature-row{padding:30px 0}.crm-contact{padding:44px 0}.crm-contact .pm-btn{width:100%;justify-content:center}}

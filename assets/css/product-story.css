@@ -1,0 +1,28 @@
+/* Shared editorial layout for Bitmint Lab product detail pages */
+.ps-product{--ps-brand:#514bfa}
+.ps-hero{background:radial-gradient(ellipse at 82% 15%,color-mix(in srgb,var(--ps-brand) 11%,white),transparent 49%),linear-gradient(135deg,#fbfcff,#f5f9fc)}
+.ps-hero-grid{display:grid;grid-template-columns:.99fr 1.01fr;gap:45px;align-items:center}
+.ps-hero-copy h1{font-family:"Oswald",Arial,sans-serif;font-size:clamp(40px,4.8vw,65px);line-height:1.12;max-width:590px;margin:17px 0 23px}
+.ps-hero-copy .pm-lead{font-size:17px;line-height:1.8}
+.ps-hero-image,.ps-feature-image{border:1px solid #e0e9f0;border-radius:19px;overflow:hidden;background:#f5f9fc;box-shadow:0 18px 48px #213e551a}
+.ps-hero-image img,.ps-feature-image img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;display:block}
+.ps-hero .pm-btn{background:var(--ps-brand)}
+.ps-hero .pm-btn.secondary{color:#274054;background:white}
+.ps-features{padding:76px 0 90px;background:#fff}
+.ps-section-heading{max-width:680px;margin-bottom:35px}
+.ps-section-heading h2,.ps-cta h2{font-family:"Oswald",Arial,sans-serif;font-size:clamp(32px,3.8vw,45px);line-height:1.2;margin:11px 0 13px}
+.ps-section-heading p,.ps-cta p{color:#65798a;line-height:1.8;font-size:15px}
+.ps-feature{display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:50px;padding:38px 0}
+.ps-feature+.ps-feature{border-top:1px solid #eaf0f4}
+.ps-feature-reverse .ps-feature-image{order:2}
+.ps-feature-number{display:block;font-size:12px;color:#7992a4;font-weight:800;letter-spacing:.1em;margin-bottom:18px}
+.ps-feature-copy h3{font-size:clamp(25px,3vw,33px);line-height:1.28;margin:12px 0 16px}
+.ps-feature-copy p{line-height:1.85;color:#647889;font-size:15px;max-width:450px;margin:0}
+.ps-cta{background:linear-gradient(113deg,#edf8f7,#f1f0ff);padding:54px 0}
+.ps-cta-inner{display:flex;justify-content:space-between;align-items:center;gap:35px}
+.ps-cta-inner>div{max-width:630px}
+.ps-cta h2{font-size:35px}
+.ps-cta .pm-btn{background:var(--ps-brand);flex:none}
+.ps-related{background:#f9fbfc}
+@media(max-width:900px){.ps-hero-grid,.ps-feature{grid-template-columns:1fr;gap:28px}.ps-feature-reverse .ps-feature-image{order:0}.ps-cta-inner{flex-direction:column;align-items:flex-start}.ps-features{padding:55px 0}}
+@media(max-width:580px){.ps-feature{padding:29px 0}.ps-hero-copy h1{font-size:42px}.ps-hero-copy .pm-lead{font-size:15px}.ps-cta{padding:43px 0}.ps-cta .pm-btn{width:100%;justify-content:center}}

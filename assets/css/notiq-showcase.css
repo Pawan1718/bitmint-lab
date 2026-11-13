@@ -1,0 +1,101 @@
+/* NOTIQ flagship page — isolated from other product styles */
+.nq-hero-visual{min-width:0;border-radius:20px;background:linear-gradient(135deg,#efedff,#fafaff);padding:18px;box-shadow:0 16px 42px #1c234322;border:1px solid #dedcf5}
+.nq-app-brand{display:flex;align-items:center;gap:12px;margin-bottom:15px;color:#282359;font-size:23px;font-weight:800}
+.nq-app-brand img{width:55px;height:55px;object-fit:contain}
+.nq-app-brand small{display:block;font-size:11px;color:#746f9a;font-weight:600;letter-spacing:.025em}
+.nq-preview-trigger{border:0;cursor:zoom-in;background:transparent;padding:0;text-align:left;width:100%;display:block}
+.nq-preview-trigger:focus-visible{outline:3px solid #5b52f6;outline-offset:4px}
+.nq-hero-visual .nq-preview-trigger img{display:block;border-radius:12px;border:1px solid #dcdaf1;box-shadow:0 10px 25px #24284b24;width:100%;height:auto}
+.nq-demo-note,.nq-disclaimer{color:#72808c;font-size:12px;line-height:1.6}
+.nq-demo-note{display:block;margin-top:11px;text-align:center}
+.nq-showcase{padding:75px 0;background:#f8f9ff}
+.nq-showcase h2,.nq-integration h2,.nq-ai-section h2,.nq-cta h2{font:600 clamp(30px,3.5vw,44px)/1.2 "Oswald",sans-serif;margin:10px 0 16px}
+.nq-tabs{display:flex;overflow-x:auto;gap:9px;padding:4px 3px 16px;scrollbar-width:thin;scroll-snap-type:x proximity}
+.nq-tab{scroll-snap-align:start;flex:none;cursor:pointer;border:1px solid #e0e1ef;border-radius:100px;padding:11px 17px;background:white;color:#485366;font:700 13px "Muli",sans-serif;transition:background .2s,border-color .2s,color .2s}
+.nq-tab:hover{border-color:#948cf7}.nq-tab.is-active{background:#514bfa;border-color:#514bfa;color:#fff}
+.nq-tab:focus-visible{outline:3px solid #aea8ff;outline-offset:2px}
+.nq-preview-frame{background:white;border:1px solid #e0e4f0;border-radius:18px;padding:16px;box-shadow:0 18px 45px #343a6112}
+.nq-preview-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:4px 4px 15px}
+.nq-preview-header strong{font-size:18px}.nq-preview-header p{color:#667488;margin:5px 0 0;font-size:13px}
+.nq-demo-label{border:1px solid #e8e6ff;background:#f4f2ff;color:#514bfa;border-radius:22px;padding:6px 10px;font-size:11px;white-space:nowrap;font-weight:700}
+.nq-gallery-image img{display:block;width:100%;height:auto;border:1px solid #e9eaf5;border-radius:12px;transition:opacity .18s ease}
+.nq-gallery-image img.nq-fading{opacity:.3}.nq-preview-frame .nq-disclaimer{margin:13px 5px 3px}
+.nq-integration-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:32px;align-items:center}
+.nq-integrations{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.nq-integrations span{border:1px solid #e1e7ee;background:#fbfcff;border-radius:12px;padding:15px 12px;display:flex;align-items:center;gap:9px;font-size:13px;font-weight:700}
+.nq-integrations i{color:#514bfa;font-size:18px}
+.nq-integrations-shot img{width:100%;height:auto;display:block;border:1px solid #e4e7ee;border-radius:12px;box-shadow:0 12px 35px #1c264018}
+.nq-ai-section{background:#f9fbff}
+.nq-ai-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.nq-ai-card{background:white;border:1px solid #e1e6f0;border-radius:15px;padding:12px;overflow:hidden;box-shadow:0 7px 20px #303a5d0c;transition:transform .2s,box-shadow .2s}
+.nq-ai-card:hover{transform:translateY(-4px);box-shadow:0 13px 28px #303a5d1a}
+.nq-ai-card img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top left;display:block;border-radius:8px}
+.nq-ai-card span{display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:700;padding:12px 4px 2px;color:#243342}
+.nq-cta{background:linear-gradient(115deg,#f0efff,#f4fbff);padding:55px 0}
+.nq-cta-inner{display:flex;justify-content:space-between;gap:22px;align-items:center}
+.nq-cta p{color:#627083}.nq-cta .pm-actions{margin-top:0}
+.nq-lightbox{width:min(96vw,1450px);max-width:none;max-height:94vh;border:1px solid #d9ddeb;border-radius:16px;padding:12px;background:#fff;box-shadow:0 20px 80px #0f193450}
+.nq-lightbox::backdrop{background:rgba(9,16,35,.78)}
+.nq-lightbox-head{display:flex;align-items:center;justify-content:space-between;padding:0 4px 11px;gap:15px}
+.nq-lightbox img{max-height:calc(94vh - 75px);width:100%;object-fit:contain;display:block}
+.nq-close{font-size:27px;line-height:1;border:0;background:#f1f2fb;padding:5px 12px;border-radius:9px;cursor:pointer;color:#36375a}
+@media(max-width:900px){.nq-integration-grid{grid-template-columns:1fr}.nq-cta-inner{flex-direction:column;align-items:flex-start}.nq-ai-cards{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.nq-showcase{padding:45px 0}.nq-ai-cards{grid-template-columns:1fr}.nq-integrations{grid-template-columns:1fr 1fr}.nq-preview-frame{padding:9px}.nq-demo-label{display:none}.nq-app-brand{font-size:19px}}
+@media(prefers-reduced-motion:reduce){.nq-tab,.nq-gallery-image img,.nq-ai-card{transition:none}}
+
+
+/* NOTIQ hero and feature polish */
+.pm-hero{background:radial-gradient(ellipse at 77% 18%,rgba(96,90,250,.1),transparent 48%),linear-gradient(135deg,#fbfcff,#f3f8fc)}
+.pm-hero .pm-layout{grid-template-columns:1.05fr .95fr;gap:48px}
+.pm-hero .pm-lead{font-size:17px;max-width:580px}
+.nq-hero-points{display:flex;gap:11px;flex-wrap:wrap;margin-top:22px}
+.nq-hero-points span{display:inline-flex;gap:7px;align-items:center;background:#fff;border:1px solid #e0e5f4;border-radius:100px;padding:8px 12px;color:#46516a;font-size:12px;font-weight:700}
+.nq-hero-points i{color:#514bfa}
+.nq-hero-visual{padding:17px;border-color:#d9d8f5;background:linear-gradient(145deg,#efeeff,#fbfcff);box-shadow:0 18px 42px #33325d1a}
+.nq-hero-visual .nq-preview-trigger:hover img{transform:translateY(-2px);box-shadow:0 16px 32px #24284b29}
+.nq-hero-visual .nq-preview-trigger img{transition:transform .2s ease,box-shadow .2s ease}
+.nq-feature-grid .pm-feature{min-height:215px;padding:25px;background:#fff;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.nq-feature-grid .pm-feature:hover{transform:translateY(-4px);border-color:#ccc8fc;box-shadow:0 16px 34px #27295c13}
+.nq-feature-grid .pm-feature h3{font-size:18px;margin:16px 0 10px}
+.nq-feature-grid .pm-feature p{margin:0;color:#627183;font-size:14px;line-height:1.7}
+.nq-feature-icon{width:47px;height:47px;display:inline-flex;justify-content:center;align-items:center;background:#efeeff;color:#514bfa;border-radius:13px;font-size:19px}
+.nq-feature-grid .pm-feature>i{display:none}
+@media(max-width:900px){.pm-hero .pm-layout{grid-template-columns:1fr;gap:30px}.nq-feature-grid .pm-feature{min-height:0}}
+@media(prefers-reduced-motion:reduce){.nq-feature-grid .pm-feature,.nq-hero-visual .nq-preview-trigger img{transition:none}}
+
+
+/* Text-free marketing imagery used beside semantic HTML copy */
+.nq-hero-marketing{padding:0;overflow:hidden;border-radius:20px;background:#f6fafb}
+.nq-hero-marketing>img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.nq-story-section{background:#fff;padding:76px 0}
+.nq-story-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center}
+.nq-story-copy h2,.nq-usecases h2{font:600 clamp(31px,3.4vw,43px)/1.19 "Oswald",sans-serif;margin:14px 0 18px}
+.nq-story-copy p{font-size:16px;color:#617487;line-height:1.8;margin:0 0 23px}
+.nq-inline-link{display:inline-flex;align-items:center;gap:12px;font-size:14px;font-weight:800;color:#514bfa}
+.nq-inline-link:hover{color:#362fc7}
+.nq-story-image{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:17px;border:1px solid #e7e9f3;box-shadow:0 16px 36px rgba(24,42,60,.09)}
+.nq-usecases{background:#f8fafe;padding:78px 0}
+.nq-usecase-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:32px}
+.nq-usecase-card{overflow:hidden;background:#fff;border:1px solid #e1e7ef;border-radius:16px;box-shadow:0 9px 25px rgba(15,33,65,.05);transition:transform .2s ease,box-shadow .2s ease}
+.nq-usecase-card:hover{transform:translateY(-4px);box-shadow:0 17px 35px rgba(15,33,65,.11)}
+.nq-usecase-card>img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.nq-usecase-copy{padding:23px 24px 26px}
+.nq-usecase-copy>span{display:block;color:#13877e;text-transform:uppercase;letter-spacing:.09em;font-size:11px;font-weight:800}
+.nq-usecase-copy h3{font-size:18px;margin:11px 0 10px;line-height:1.4}
+.nq-usecase-copy p{font-size:13px;line-height:1.7;color:#64758a;margin:0}
+@media(max-width:900px){.nq-story-grid{grid-template-columns:1fr;gap:26px}.nq-usecase-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.nq-story-section,.nq-usecases{padding:52px 0}.nq-usecase-grid{grid-template-columns:1fr}.nq-story-copy p{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.nq-usecase-card{transition:none}}
+
+/* Connected NOTIQ learning resources */
+.nq-guides{background:#f8fafc}
+.nq-guides-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:26px}
+.nq-guides-grid article{padding:26px;border-radius:17px;border:1px solid #e1e8ef;background:#fff;display:flex;flex-direction:column}
+.nq-guides-grid article>span{color:#5951eb;font-size:12px;text-transform:uppercase;letter-spacing:.06em;font-weight:800}
+.nq-guides-grid h3{font-size:19px;line-height:1.4;margin:13px 0}
+.nq-guides-grid h3 a:hover{color:#514bfa}
+.nq-guides-grid p{font-size:14px;line-height:1.75;color:#62768a;flex:1}
+.nq-guides-grid .nq-inline-link{font-size:13px;margin-top:12px}
+.nq-guides-more{margin-top:23px;font-weight:800;font-size:14px;color:#514bfa}
+@media(max-width:850px){.nq-guides-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:550px){.nq-guides-grid{grid-template-columns:1fr}}

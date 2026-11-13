@@ -9,6 +9,14 @@
       if (select) select.value = link.getAttribute("data-product-enquiry");
     });
   });
+  // Preselect a product when arriving from a dedicated product page.
+  const product = new URLSearchParams(window.location.search).get("product");
+  if (product) {
+    const select = form.querySelector('[name="requirementType"]');
+    if (select && Array.from(select.options).some(function (option) { return option.value === product; })) {
+      select.value = product;
+    }
+  }
   form.addEventListener("submit", function (event) {
     event.preventDefault();
     if (!form.reportValidity()) return;

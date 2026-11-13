@@ -1,0 +1,34 @@
+/* NOTIQ educational articles — accessible, responsive static layout */
+.na-header{background:#fff;border-bottom:1px solid #e6edf3}
+.na-nav{max-width:1120px;margin:auto;padding:10px 24px;display:flex;gap:24px;justify-content:space-between;align-items:center;min-height:74px}
+.na-nav img{max-width:155px;height:auto;display:block}
+.na-nav nav{display:flex;flex-wrap:wrap;gap:20px;font-size:14px;font-weight:800}
+.na-nav nav a:hover,.na-nav nav a:focus-visible{color:#514bfa}
+.na-blog{max-width:1120px;margin:auto;padding:64px 24px 88px}
+.na-blog-intro{max-width:750px;margin-bottom:34px}
+.na-kicker,.na-category{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#514bfa}
+.na-blog h1,.na-article h1{font:600 clamp(38px,5vw,62px)/1.14 "Oswald",sans-serif;margin:14px 0 20px}
+.na-blog-intro p,.na-lead{font-size:18px;color:#5d7082;line-height:1.8}
+.na-article-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.na-article-card{border:1px solid #e1e8f1;border-radius:16px;overflow:hidden;background:#fff;display:flex;flex-direction:column;transition:box-shadow .2s,border-color .2s}
+.na-article-card:hover{box-shadow:0 12px 28px #1c355514;border-color:#cac7ff}
+.na-article-card img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;display:block}
+.na-article-card>div{padding:22px;display:flex;flex-direction:column;flex:1}
+.na-article-card h2{font-size:21px;line-height:1.35;margin:12px 0}
+.na-article-card p{color:#64788b;line-height:1.65;font-size:14px;flex:1}
+.na-article-card a,.na-related a,.na-back a{color:#514bfa;font-weight:800}
+.na-article{max-width:780px;padding:54px 24px 40px;margin:auto}
+.na-breadcrumb{font-size:13px;color:#718496;margin-bottom:32px}
+.na-article h1{margin-bottom:26px}
+.na-article section{margin:40px 0}
+.na-article section h2{font-size:26px;line-height:1.35;margin:0 0 13px}
+.na-article section p{font-size:16px;color:#485e70;line-height:1.95}
+.na-related{padding:27px;border-radius:17px;background:#f0f2ff;margin-top:48px}
+.na-related h2{font-size:24px;margin:0 0 10px}
+.na-related p{line-height:1.7;color:#4c6071}
+.na-back{max-width:780px;margin:0 auto 70px;padding:0 24px}
+.na-footer{padding:26px 24px;background:#142e3b;color:#d5e2ec;font-size:13px}
+.na-footer>div{max-width:1120px;margin:auto;display:flex;flex-wrap:wrap;gap:20px}
+.na-footer a:hover{text-decoration:underline}
+@media(max-width:800px){.na-article-list{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.na-article-list{grid-template-columns:1fr}.na-nav{align-items:flex-start;flex-direction:column}.na-nav nav{gap:14px}.na-blog{padding-top:40px}.na-article{padding-top:36px}}
