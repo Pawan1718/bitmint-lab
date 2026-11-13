@@ -10611,3 +10611,32 @@ img,video,svg,canvas { max-width:100%; }
   .wm-header .slicknav_nav .wm-products-dropdown li {border:0}
   .wm-header .slicknav_nav .wm-products-dropdown a {font-size:13px;padding:10px 15px}
 }
+
+
+/* Bitmint dark navigation shared with product pages: preserve readable white wordmark */
+.wm-header .wm-navbar,
+.wm-header.wm-header-scrolled .wm-navbar{
+  background:#111c30;
+  border-bottom:1px solid #26364e;
+  box-shadow:0 7px 22px rgba(17,28,48,.12);
+}
+.wm-main-menu #navigation > li > a,
+.wm-header.wm-header-scrolled .wm-main-menu #navigation > li > a{color:#f5f8ff}
+.wm-main-menu #navigation > li > a:hover,
+.wm-main-menu #navigation > li > a.active{color:#78dfec}
+.wm-main-menu #navigation > li > a::after{background:#78dfec}
+.wm-header .wm-header-btn{background:#514bfa;border-color:#6964fb;box-shadow:0 7px 18px #514bfa25}
+.wm-header .wm-header-btn:hover{background:#433ce6;border-color:#433ce6}
+@media (min-width:992px){
+ .wm-main-menu #navigation .wm-products-dropdown{background:#19273e;border-color:#354762}
+ .wm-main-menu #navigation .wm-products-dropdown a{color:#f1f4ff}
+ .wm-main-menu #navigation .wm-products-dropdown a:hover,
+ .wm-main-menu #navigation .wm-products-dropdown a:focus-visible{background:#354667;color:#fff}
+ .wm-main-menu #navigation .wm-products-dropdown .wm-dropdown-all{border-top-color:#34435b}
+}
+.wm-header .slicknav_nav{background:#17253d;border-color:#34445f}
+.wm-header .slicknav_nav a{color:#f6f9ff}
+.wm-header .slicknav_nav a:hover,
+.wm-header .slicknav_nav a.active{background:#354667;color:#fff}
+.wm-header .slicknav_nav li{border-bottom-color:#34445f}
+.wm-header .slicknav_nav .wm-products-dropdown a{color:#e8ecff}
