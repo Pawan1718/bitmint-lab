@@ -86,3 +86,16 @@
 @media(max-width:900px){.nq-story-grid{grid-template-columns:1fr;gap:26px}.nq-usecase-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.nq-story-section,.nq-usecases{padding:52px 0}.nq-usecase-grid{grid-template-columns:1fr}.nq-story-copy p{font-size:14px}}
 @media(prefers-reduced-motion:reduce){.nq-usecase-card{transition:none}}
+
+/* Connected NOTIQ learning resources */
+.nq-guides{background:#f8fafc}
+.nq-guides-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:26px}
+.nq-guides-grid article{padding:26px;border-radius:17px;border:1px solid #e1e8ef;background:#fff;display:flex;flex-direction:column}
+.nq-guides-grid article>span{color:#5951eb;font-size:12px;text-transform:uppercase;letter-spacing:.06em;font-weight:800}
+.nq-guides-grid h3{font-size:19px;line-height:1.4;margin:13px 0}
+.nq-guides-grid h3 a:hover{color:#514bfa}
+.nq-guides-grid p{font-size:14px;line-height:1.75;color:#62768a;flex:1}
+.nq-guides-grid .nq-inline-link{font-size:13px;margin-top:12px}
+.nq-guides-more{margin-top:23px;font-weight:800;font-size:14px;color:#514bfa}
+@media(max-width:850px){.nq-guides-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:550px){.nq-guides-grid{grid-template-columns:1fr}}
