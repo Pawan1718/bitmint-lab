@@ -1,0 +1,44 @@
+/* NOTIQ flagship page — isolated from other product styles */
+.nq-hero-visual{min-width:0;border-radius:20px;background:linear-gradient(135deg,#efedff,#fafaff);padding:18px;box-shadow:0 16px 42px #1c234322;border:1px solid #dedcf5}
+.nq-app-brand{display:flex;align-items:center;gap:12px;margin-bottom:15px;color:#282359;font-size:23px;font-weight:800}
+.nq-app-brand img{width:55px;height:55px;object-fit:contain}
+.nq-app-brand small{display:block;font-size:11px;color:#746f9a;font-weight:600;letter-spacing:.025em}
+.nq-preview-trigger{border:0;cursor:zoom-in;background:transparent;padding:0;text-align:left;width:100%;display:block}
+.nq-preview-trigger:focus-visible{outline:3px solid #5b52f6;outline-offset:4px}
+.nq-hero-visual .nq-preview-trigger img{display:block;border-radius:12px;border:1px solid #dcdaf1;box-shadow:0 10px 25px #24284b24;width:100%;height:auto}
+.nq-demo-note,.nq-disclaimer{color:#72808c;font-size:12px;line-height:1.6}
+.nq-demo-note{display:block;margin-top:11px;text-align:center}
+.nq-showcase{padding:75px 0;background:#f8f9ff}
+.nq-showcase h2,.nq-integration h2,.nq-ai-section h2,.nq-cta h2{font:600 clamp(30px,3.5vw,44px)/1.2 "Oswald",sans-serif;margin:10px 0 16px}
+.nq-tabs{display:flex;overflow-x:auto;gap:9px;padding:4px 3px 16px;scrollbar-width:thin;scroll-snap-type:x proximity}
+.nq-tab{scroll-snap-align:start;flex:none;cursor:pointer;border:1px solid #e0e1ef;border-radius:100px;padding:11px 17px;background:white;color:#485366;font:700 13px "Muli",sans-serif;transition:background .2s,border-color .2s,color .2s}
+.nq-tab:hover{border-color:#948cf7}.nq-tab.is-active{background:#514bfa;border-color:#514bfa;color:#fff}
+.nq-tab:focus-visible{outline:3px solid #aea8ff;outline-offset:2px}
+.nq-preview-frame{background:white;border:1px solid #e0e4f0;border-radius:18px;padding:16px;box-shadow:0 18px 45px #343a6112}
+.nq-preview-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:4px 4px 15px}
+.nq-preview-header strong{font-size:18px}.nq-preview-header p{color:#667488;margin:5px 0 0;font-size:13px}
+.nq-demo-label{border:1px solid #e8e6ff;background:#f4f2ff;color:#514bfa;border-radius:22px;padding:6px 10px;font-size:11px;white-space:nowrap;font-weight:700}
+.nq-gallery-image img{display:block;width:100%;height:auto;border:1px solid #e9eaf5;border-radius:12px;transition:opacity .18s ease}
+.nq-gallery-image img.nq-fading{opacity:.3}.nq-preview-frame .nq-disclaimer{margin:13px 5px 3px}
+.nq-integration-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:32px;align-items:center}
+.nq-integrations{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.nq-integrations span{border:1px solid #e1e7ee;background:#fbfcff;border-radius:12px;padding:15px 12px;display:flex;align-items:center;gap:9px;font-size:13px;font-weight:700}
+.nq-integrations i{color:#514bfa;font-size:18px}
+.nq-integrations-shot img{width:100%;height:auto;display:block;border:1px solid #e4e7ee;border-radius:12px;box-shadow:0 12px 35px #1c264018}
+.nq-ai-section{background:#f9fbff}
+.nq-ai-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.nq-ai-card{background:white;border:1px solid #e1e6f0;border-radius:15px;padding:12px;overflow:hidden;box-shadow:0 7px 20px #303a5d0c;transition:transform .2s,box-shadow .2s}
+.nq-ai-card:hover{transform:translateY(-4px);box-shadow:0 13px 28px #303a5d1a}
+.nq-ai-card img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top left;display:block;border-radius:8px}
+.nq-ai-card span{display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:700;padding:12px 4px 2px;color:#243342}
+.nq-cta{background:linear-gradient(115deg,#f0efff,#f4fbff);padding:55px 0}
+.nq-cta-inner{display:flex;justify-content:space-between;gap:22px;align-items:center}
+.nq-cta p{color:#627083}.nq-cta .pm-actions{margin-top:0}
+.nq-lightbox{width:min(96vw,1450px);max-width:none;max-height:94vh;border:1px solid #d9ddeb;border-radius:16px;padding:12px;background:#fff;box-shadow:0 20px 80px #0f193450}
+.nq-lightbox::backdrop{background:rgba(9,16,35,.78)}
+.nq-lightbox-head{display:flex;align-items:center;justify-content:space-between;padding:0 4px 11px;gap:15px}
+.nq-lightbox img{max-height:calc(94vh - 75px);width:100%;object-fit:contain;display:block}
+.nq-close{font-size:27px;line-height:1;border:0;background:#f1f2fb;padding:5px 12px;border-radius:9px;cursor:pointer;color:#36375a}
+@media(max-width:900px){.nq-integration-grid{grid-template-columns:1fr}.nq-cta-inner{flex-direction:column;align-items:flex-start}.nq-ai-cards{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.nq-showcase{padding:45px 0}.nq-ai-cards{grid-template-columns:1fr}.nq-integrations{grid-template-columns:1fr 1fr}.nq-preview-frame{padding:9px}.nq-demo-label{display:none}.nq-app-brand{font-size:19px}}
+@media(prefers-reduced-motion:reduce){.nq-tab,.nq-gallery-image img,.nq-ai-card{transition:none}}
