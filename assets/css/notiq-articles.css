@@ -58,3 +58,6 @@
 .na-editor-note{font-size:13px;color:#708297;line-height:1.7}
 .na-featured-card{border-color:#b8b4ff;background:#fdfdff}
 @media(max-width:600px){.na-longform .na-article-hero{margin:18px 0}.na-early-access{padding:20px}.na-final-cta{padding:18px}}
+
+/* Dedicated blog hero illustrations, including shorter guides */
+.na-article>.na-article-hero{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border:1px solid #e3eaf1;border-radius:18px;margin:24px 0 30px}
