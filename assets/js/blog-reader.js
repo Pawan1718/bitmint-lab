@@ -32,13 +32,13 @@ const icon=document.createElement('img');icon.src='https://cdn.jsdelivr.net/npm/
 function getMarkdown(){
  const lines=['# '+(article.querySelector('h1')?.textContent.trim()||document.title),'','Source: '+location.href.split('#')[0],''];
  const source=article.querySelectorAll('.na-lead,section h2,section h3,section p,section ul li,section ol li');
- source.forEach(el=>{const value=el.textContent.replace(/\\s+/g,' ').trim();if(!value)return;
+ source.forEach(el=>{const value=el.textContent.replace(/\s+/g,' ').trim();if(!value)return;
  if(el.matches('h2'))lines.push('## '+value,'');
  else if(el.matches('h3'))lines.push('### '+value,'');
  else if(el.matches('li'))lines.push('- '+value);
  else lines.push(value,'');
  });
- return lines.join('\\n');
+ return lines.join('\n');
 }
 const makeCopy=(label,content,success)=>{
  const button=document.createElement('button');button.className='na-ai-copy';button.type='button';button.textContent=label;button.addEventListener('click',async()=>{const ok=await copyText(content());state.textContent=ok?success:'Copy unavailable. Please allow clipboard access.'});actions.append(button);
