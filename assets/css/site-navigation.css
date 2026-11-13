@@ -38,3 +38,13 @@ body:has(>.unav-header){padding-top:0!important}
 /* Explicit closed state wins against display:flex and keeps mobile menu hidden. */
 .unav-mobile:not([open])>nav{display:none}
 .unav-products>summary.unav-selected{color:#84e4f3}
+
+/* Global NOTIQ pre-launch notice; same compact layout across site pages. */
+.unav-announce{position:sticky;top:0;z-index:10030;min-height:38px;display:flex;justify-content:center;align-items:center;gap:12px;padding:8px 45px 8px 16px;background:#eae9ff;color:#242052;font:700 12px/1.5 "Muli",Arial,sans-serif;text-align:center;border-bottom:1px solid #d6d3ff}
+.unav-announce a{color:#3b35bf;text-decoration:underline;text-underline-offset:3px;font-weight:800;white-space:nowrap}
+.unav-announce button{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:26px;height:26px;border:0;background:transparent;color:#444064;border-radius:5px;font-size:23px;line-height:20px;cursor:pointer}
+.unav-announce button:focus-visible{outline:2px solid #514bfa;outline-offset:2px}
+.unav-header{top:38px}
+.unav-announcement-hidden .unav-header{top:0}
+.unav-tools>summary.unav-selected{color:#84e4f3}
+@media(max-width:600px){.unav-announce{gap:5px;flex-wrap:wrap;padding:7px 36px 7px 10px;font-size:11px}.unav-header{top:48px}.unav-announcement-hidden .unav-header{top:0}}
