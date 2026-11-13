@@ -47,3 +47,20 @@ body:has(>.unav-header){padding-top:0!important}
 .unav-header{top:38px}
 .unav-announcement-hidden .unav-header{top:0}
 @media(max-width:600px){.unav-announce{gap:5px;flex-wrap:wrap;padding:7px 36px 7px 10px;font-size:11px}.unav-header{top:48px}.unav-announcement-hidden .unav-header{top:0}}
+
+/* NOTIQ brand-forward, compact announcement. */
+.unav-announce{gap:11px;flex-wrap:wrap;padding:7px 42px 7px 16px;min-height:42px}
+.unav-announce-brand{display:inline-flex;align-items:center;flex:none}
+.unav-announce-brand img{width:25px;height:25px;object-fit:contain;display:block}
+.unav-announce-copy{font-size:12px;font-weight:800;color:#242052}
+.unav-announce-context{font-size:11px;font-weight:600;color:#605b82}
+.unav-announce-link{font-size:12px;font-weight:800}
+.unav-announce-brand:focus-visible,.unav-announce-link:focus-visible{outline:2px solid #514bfa;outline-offset:3px;border-radius:4px}
+.unav-header{top:42px}
+@media(max-width:650px){
+ .unav-announce{gap:5px 9px;padding:8px 34px 8px 12px;min-height:0}
+ .unav-announce-copy{font-size:11px;line-height:1.35}
+ .unav-announce-context{display:none}
+ .unav-announce-link{font-size:11px}
+ .unav-header{top:62px}
+}
