@@ -1,0 +1,36 @@
+/* Bitmint Lab: shared, accessible navigation across homepage, products, blog and legal pages. */
+.unav-header,.unav-header *{box-sizing:border-box}
+.unav-header{position:sticky;top:0;z-index:10020;background:#111c30;border-bottom:1px solid #2a3950;color:#f6f9ff;box-shadow:0 5px 20px rgba(17,28,48,.12);font-family:"Muli",Arial,sans-serif}
+.unav-shell{max-width:1440px;margin:auto;min-height:82px;padding:0 24px;display:flex;align-items:center;gap:20px}
+.unav-brand{display:flex;align-items:center;flex:none;width:190px;min-width:0}
+.unav-brand img{width:190px;max-width:100%;height:58px;object-fit:contain;object-position:left center;display:block}
+.unav-desktop{display:flex;align-items:center;justify-content:center;gap:19px;flex:1;min-width:0}
+.unav-header a{color:#f6f9ff;text-decoration:none}
+.unav-desktop>a,.unav-products>summary{padding:14px 0;font-size:13px;line-height:1.25;font-weight:700;white-space:nowrap}
+.unav-header a:hover,.unav-header a:focus-visible,.unav-products>summary:hover{color:#84e4f3}
+.unav-header a[aria-current="page"],.unav-header a[aria-current="location"]{color:#84e4f3}
+.unav-products{position:relative}
+.unav-products>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px}
+.unav-products>summary::-webkit-details-marker,.unav-mobile>summary::-webkit-details-marker{display:none}
+.unav-products>summary:after{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);margin-left:3px}
+.unav-products[open]>summary:after{transform:rotate(225deg)}
+.unav-submenu{position:absolute;top:100%;left:-17px;z-index:3;background:#19273e;border:1px solid #34445f;box-shadow:0 18px 40px rgba(11,23,38,.28);border-radius:12px;padding:9px;min-width:255px;max-height:70vh;overflow-y:auto;display:flex;flex-direction:column}
+.unav-products:not([open])>.unav-submenu{display:none}
+.unav-submenu a{font-size:13px;line-height:1.4;padding:10px 12px;border-radius:7px;color:#e8ecff}
+.unav-submenu a:hover,.unav-submenu a:focus-visible,.unav-submenu a[aria-current="page"]{background:#314664;color:#fff}
+.unav-cta{flex:none;background:#514bfa!important;border:1px solid #7772ff;color:#fff!important;border-radius:9px;padding:13px 15px;white-space:nowrap;font-size:13px;font-weight:800}
+.unav-cta:hover{background:#433ce6!important}
+.unav-mobile{display:none;position:relative;margin-left:auto}
+.unav-mobile>summary{list-style:none;display:flex;align-items:center;gap:9px;border:1px solid #42536d;border-radius:9px;color:#fff;padding:10px 12px;font-size:14px;font-weight:700;cursor:pointer}
+.unav-mobile>summary:before{content:"☰";font-size:18px;line-height:1}
+.unav-mobile>nav{position:absolute;top:calc(100% + 12px);right:0;width:min(340px,calc(100vw - 32px));max-height:calc(100dvh - 95px);overflow-y:auto;display:flex;flex-direction:column;padding:12px;background:#17253d;border:1px solid #34445f;box-shadow:0 16px 42px rgba(0,0,0,.3);border-radius:12px}
+.unav-mobile>nav>a,.unav-mobile .unav-products>summary{display:block;padding:12px;font-size:14px;font-weight:700}
+.unav-mobile .unav-submenu{position:static;min-width:0;width:auto;max-height:none;background:#1b2941;border:none;box-shadow:none;border-radius:6px;padding:1px 0 1px 10px}
+.unav-mobile .unav-submenu a{padding:10px 13px}
+.unav-mobile .unav-products:not([open])>.unav-submenu{display:none}
+.unav-header a:focus-visible,.unav-header summary:focus-visible{outline:2px solid #84e4f3;outline-offset:3px;border-radius:4px}
+@media(max-width:1180px){.unav-desktop,.unav-cta{display:none}.unav-mobile{display:block}.unav-shell{min-height:72px}.unav-brand img{height:54px}}
+@media(max-width:600px){.unav-shell{padding:0 16px;gap:12px}.unav-brand{width:170px}.unav-brand img{width:170px;height:52px}}
+@media(prefers-reduced-motion:reduce){.unav-header *{scroll-behavior:auto!important}}
+html{scroll-padding-top:90px}
+body:has(>.unav-header){padding-top:0!important}
