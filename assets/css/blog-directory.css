@@ -26,3 +26,18 @@
 @media(max-width:1080px){.na-blog-toolbar{grid-template-columns:minmax(220px,2fr) repeat(2,minmax(155px,1fr))}.na-blog-reset{grid-column:1/-1;justify-self:start}.na-blog{padding:48px 22px 85px}}
 @media(max-width:760px){.na-blog-toolbar{grid-template-columns:1fr 1fr;gap:14px;padding:16px}.na-blog-search{grid-column:1/-1}.na-blog-reset{grid-column:1/-1}.na-blog .na-article-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:540px){.na-blog{padding:37px 17px 70px}.na-blog .na-article-list,.na-blog-toolbar{grid-template-columns:1fr}.na-blog-search,.na-blog-reset{grid-column:auto}.na-blog .na-article-card>div{padding:17px}.na-blog-intro h1{font-size:36px}}
+
+/* Screenshot-inspired capsule filters: simple, roomy, responsive. */
+.na-blog .na-blog-toolbar{display:flex;flex-direction:column;align-items:stretch;gap:22px;border:0;background:transparent;border-radius:0;padding:0;margin:34px 0 20px}
+.na-blog .na-blog-search{width:100%;display:flex;gap:9px}
+.na-blog .na-blog-search input{height:53px;border:1px solid #d9dfe8;border-radius:11px;background:#f7f8fa;font-size:14px;padding:0 19px}
+.na-blog .na-filter-row{display:flex;flex-direction:column;gap:11px;width:100%}
+.na-blog .na-filter-header{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.na-blog .na-filter-header>span{font-size:12px;font-weight:700;color:#526174}
+.na-blog .na-filter-pills{display:flex;align-items:center;flex-wrap:wrap;gap:9px 10px}
+.na-blog .na-filter-pill{appearance:none;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;min-height:37px;border-radius:11px;border:1px solid transparent;background:#f1f2f4;color:#526176;padding:9px 18px;font:600 13px/1.3 "Muli",Arial,sans-serif;cursor:pointer;transition:background .16s ease,border-color .16s ease,color .16s ease}
+.na-blog .na-filter-pill:hover{background:#e8e7fa;border-color:#d7d4fb;color:#3830b0}
+.na-blog .na-filter-pill[aria-pressed="true"]{background:#514bfa;border-color:#514bfa;color:white;box-shadow:0 3px 10px rgba(81,75,250,.13)}
+.na-blog .na-filter-pill:focus-visible{outline:2px solid #514bfa;outline-offset:3px}
+.na-blog .na-blog-reset{height:auto;min-height:32px;padding:6px 12px;border-radius:8px;background:#f5f4ff}
+@media(max-width:600px){.na-blog .na-blog-toolbar{gap:19px;margin:26px 0 17px}.na-blog .na-filter-pills{gap:8px}.na-blog .na-filter-pill{padding:8px 13px;font-size:12px;min-height:34px}}

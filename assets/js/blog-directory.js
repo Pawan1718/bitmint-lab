@@ -19,19 +19,34 @@ const items=cards.map(card=>{
  return{card,categoryLabel,categoryId:normalize(categoryLabel),productId,searchText};
 });
 const categories=Array.from(new Set(items.map(x=>x.categoryLabel))).sort((a,b)=>a.localeCompare(b));
-categories.forEach(value=>{const option=document.createElement('option');option.value=normalize(value);option.textContent=value;category.append(option)});
+const productLabels=[['all','All Products'],['notiq','NOTIQ'],['mintiq','MintIQ (K-RAG)'],['shala','School ERP'],['crm','CRM'],['hr-lab','HR-Lab'],['lms','LMS'],['business-erp','Business ERP'],['paper-trading','Paper Trading']];
+let activeCategory='all',activeProduct='all';
+function addPill(container,value,label,kind){
+ const button=document.createElement('button');button.type='button';button.className='na-filter-pill';button.textContent=label;button.dataset.value=value;
+ button.setAttribute('aria-pressed',String(value==='all'));
+ button.addEventListener('click',()=>{if(kind==='category')activeCategory=value;else activeProduct=value;apply()});
+ container.append(button);
+}
+addPill(category,'all','All','category');
+categories.forEach(value=>addPill(category,normalize(value),value,'category'));
+productLabels.forEach(([value,label])=>addPill(product,value,label,'product'));
+function syncPills(){
+ category.querySelectorAll('button').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.value===activeCategory)));
+ product.querySelectorAll('button').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.value===activeProduct)));
+}
 function apply(){
- const q=normalize(search.value),cat=category.value,prod=product.value;
+ const q=normalize(search.value);
  let visible=0;
  items.forEach(item=>{
-  const match=(!q||item.searchText.includes(q))&&(cat==='all'||item.categoryId===cat)&&(prod==='all'||item.productId===prod);
+  const match=(!q||item.searchText.includes(q))&&(activeCategory==='all'||item.categoryId===activeCategory)&&(activeProduct==='all'||item.productId===activeProduct);
   item.card.hidden=!match;if(match)visible++;
  });
  count.textContent=visible+' '+(visible===1?'article':'articles')+' found';
  empty.hidden=visible!==0;
+ syncPills();
 }
-function reset(){search.value='';category.value='all';product.value='all';apply();search.focus()}
-for(const control of [search,category,product])control.addEventListener(control===search?'input':'change',apply);
+function reset(){search.value='';activeCategory='all';activeProduct='all';apply();search.focus()}
+search.addEventListener('input',apply);
 document.getElementById('na-blog-reset')?.addEventListener('click',reset);
 document.getElementById('na-blog-clear-empty')?.addEventListener('click',reset);
 apply();
