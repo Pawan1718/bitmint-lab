@@ -27,7 +27,7 @@
    });
  }
  function closeAll(){details.forEach(d=>{d.open=false})}
- document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeAll();}});
+ document.addEventListener("keydown",e=>{if(e.key==="Escape"){const active=details.filter(d=>d.open&&d.contains(document.activeElement)).at(-1);closeAll();if(active)active.querySelector(":scope > summary")?.focus();}});
  document.addEventListener("click",e=>{if(!header.contains(e.target))closeAll()});
  details.forEach(d=>d.addEventListener("toggle",()=>{
    if(!d.open)return;
