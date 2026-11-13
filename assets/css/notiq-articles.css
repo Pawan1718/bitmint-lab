@@ -61,3 +61,8 @@
 
 /* Dedicated blog hero illustrations, including shorter guides */
 .na-article>.na-article-hero{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border:1px solid #e3eaf1;border-radius:18px;margin:24px 0 30px}
+
+/* Small platform identity marks in comparison — no decorative card clutter */
+.na-vendor{display:inline-flex;align-items:center;gap:9px;min-width:140px;font-weight:700;white-space:nowrap}
+.na-vendor img{display:block;width:24px;height:24px;object-fit:contain;border-radius:5px;flex:none;background:#fff}
+@media(max-width:600px){.na-vendor{min-width:112px;gap:7px}.na-vendor img{width:20px;height:20px}}
