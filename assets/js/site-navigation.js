@@ -17,7 +17,7 @@
  notice.setAttribute("role","region");
  notice.setAttribute("aria-label","NOTIQ platform announcement");
  const brand=document.createElement("a");brand.className="unav-announce-brand";brand.href="https://notiq.bitmintlab.in/";brand.setAttribute("aria-label","Visit NOTIQ");
- const logo=document.createElement("img");logo.src="https://notiq.bitmintlab.in/android-chrome-512x512.png";logo.alt="NOTIQ";logo.width=25;logo.height=25;logo.decoding="async";brand.append(logo);
+ const logo=document.createElement("img");logo.src="/assets/img/notiq-icon-64.webp";logo.onerror=function(){logo.onerror=null;logo.src="https://notiq.bitmintlab.in/android-chrome-512x512.png";};logo.alt="NOTIQ";logo.width=25;logo.height=25;logo.decoding="async";brand.append(logo);
  const message=document.createElement("span");message.className="unav-announce-copy";message.textContent="NOTIQ · WhatsApp Messaging & Customer Communication Platform";
  const context=document.createElement("span");context.className="unav-announce-context";context.textContent="Explore early access";
  const link=document.createElement("a");link.href="https://notiq.bitmintlab.in/";link.className="unav-announce-link";link.textContent="Explore NOTIQ →";
