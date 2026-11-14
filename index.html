@@ -63,6 +63,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Load fonts independently of the main CSS to avoid a serial @import request. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&family=Oswald:wght@200;300;400;500;600;700&display=swap">
 
     <!-- Core Layout -->
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -85,25 +87,7 @@
 
 <body>
 
-    <!-- Preloader Start -->
-    <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-
-                <div class="preloader-img pere-text">
-                    <img
-    src="assets/img/bitmint-lab-icon.ico"
-    alt="Bitmint Lab"
-    width="64"
-    height="64"
-    decoding="async"
->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Preloader End -->
+    <!-- Direct content rendering: avoid fullscreen preloader hiding the first paint. -->
 
 
     <!-- Header Start -->
@@ -3120,6 +3104,7 @@
                             src="assets/img/bitmint-lab-full.webp"
                             alt=""
                             class="wm-about-core-logo"
+                            width="190" height="58" loading="lazy" decoding="async"
                         >
 
                         <strong>Bitmint Lab</strong>
@@ -3303,6 +3288,7 @@
             <img
     src="assets/img/bitmint-lab-icon.ico"
     alt=""
+    loading="lazy"
     class="wm-final-cta-core-logo-image"
     width="15"
     height="15"
