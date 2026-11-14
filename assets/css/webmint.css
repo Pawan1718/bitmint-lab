@@ -3,10 +3,6 @@
    Replaces required legacy style.css dependencies
 ========================================================= */
 
-@import url(
-    "https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800|Oswald:200,300,400,500,600,700&display=swap"
-);
-
 html {
     scroll-behavior: auto;
     scroll-padding-top: 100px;
