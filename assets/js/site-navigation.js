@@ -1,6 +1,15 @@
 /* Shared navigation: close on Escape/outside click, identify current page and homepage section. */
 (function(){
  "use strict";
+ // Analytics is disabled until a real GA4 ID is configured and visitor opts in.
+ (function loadAnalyticsFiles(){
+   const current=document.currentScript;
+   const base=current?.src ? new URL('.',current.src) : new URL('assets/js/',location.href);
+   const config=document.createElement('script');
+   config.src=new URL('analytics-config.js',base).href;
+   config.onload=()=>{const analytics=document.createElement('script');analytics.src=new URL('site-analytics.js',base).href;document.head.appendChild(analytics)};
+   document.head.appendChild(config);
+ })();
  const header=document.querySelector(".unav-header");
  if(!header)return;
  const notice=document.createElement("div");

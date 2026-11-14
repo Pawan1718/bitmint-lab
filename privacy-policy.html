@@ -26,12 +26,12 @@
     <meta property="og:title" content="Privacy Policy | Bitmint Lab">
     <meta property="og:description" content="Privacy Policy of Bitmint Lab describing how we collect, use, protect and manage personal information.">
     <meta property="og:url" content="https://bitmintlab.in/privacy-policy.html">
-    <meta property="og:image" content="https://bitmintlab.in/assets/img/og-image.jpg">
+    <meta property="og:image" content="https://bitmintlab.in/assets/img/Blogs/03_ai_business_knowledge_assistant.webp">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Privacy Policy | Bitmint Lab">
     <meta name="twitter:description" content="Privacy Policy of Bitmint Lab describing how we collect, use, protect and manage personal information.">
-    <meta name="twitter:image" content="https://bitmintlab.in/assets/img/og-image.jpg">
+    <meta name="twitter:image" content="https://bitmintlab.in/assets/img/Blogs/03_ai_business_knowledge_assistant.webp">
 
     <link
         rel="shortcut icon"
@@ -72,7 +72,7 @@
         </p>
 
         <p class="legal-updated">
-            Last updated: July 18, 2026
+            Last updated: November 14, 2026
         </p>
 
     </div>
@@ -225,6 +225,24 @@
                 applications may also process technical information
                 according to their own privacy practices.
             </p>
+
+            <p>
+                On the Bitmint Lab website, optional Google Analytics 4 measurement
+                is loaded only when you choose “Allow analytics” and a GA4 property
+                has been configured. If enabled, we use aggregated page views and
+                interaction events such as contact-link and product-link clicks.
+                We do not intentionally include your enquiry message, email address,
+                name or phone number in those analytics events. Selecting “No thanks”
+                leaves optional analytics disabled on this website.
+            </p>
+
+            <p>
+                Your analytics choice is saved in your browser. You may change it
+                using the control below. You can also clear this website’s local
+                storage to reset the choice.
+            </p>
+            <button type="button" id="bitmint-change-analytics" style="border:1px solid #514bfa;border-radius:8px;padding:10px 14px;color:#514bfa;background:white;cursor:pointer;font-weight:700">Change analytics preference</button>
+            <span id="bitmint-analytics-feedback" role="status" style="margin-left:10px"></span>
 
         </section>
 
@@ -488,6 +506,11 @@
 </footer>
 
 
-<script defer src="assets/js/site-navigation.js"></script></body>
+<script defer src="assets/js/site-navigation.js"></script><script>
+document.getElementById('bitmint-change-analytics')?.addEventListener('click',function(){
+  try { localStorage.removeItem('bitmint_analytics_consent_v1'); document.getElementById('bitmint-analytics-feedback').textContent='Preference reset. Reload this page to choose again.'; }
+  catch (_) { document.getElementById('bitmint-analytics-feedback').textContent='Clear site storage in your browser to reset preferences.'; }
+});
+</script></body>
 
 </html>
