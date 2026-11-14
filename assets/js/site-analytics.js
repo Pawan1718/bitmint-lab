@@ -65,7 +65,7 @@
       var href; try { href = new URL(raw, location.href); } catch (_) { return; }
       if (href.hostname === 'notiq.bitmintlab.in') {
         send(/book-demo/.test(href.pathname) ? 'demo_click' : /register/.test(href.pathname) ? 'blog_signup_click' : 'notiq_cta_click',
-          { location: document.body.classList.contains('na-blog') ? 'blog' : 'website' });
+          { location: document.querySelector('.na-blog, .na-article') ? 'blog' : 'website' });
       } else if (href.hostname === 'wa.me') {
         send('contact_whatsapp_click', { source: 'link' });
       } else if (href.protocol === 'mailto:') {
