@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://bitmintlab.in/sitemap.xml
+
+Agentmap: https://bitmintlab.in/.well-known/ard.json
