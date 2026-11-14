@@ -96,3 +96,14 @@ html.unav-announcement-hidden body::before {
     align-content: center;
   }
 }
+
+/* Lift the embedded NOTIQ/K-RAG chat host above the viewport edge.
+   Scope this to the site widget; leave Shadow DOM chat controls untouched. */
+body > [data-rag-chat-widget-host] {
+  bottom: calc(76px + var(--rw-keyboard-offset, 0px)) !important;
+}
+@media (max-width: 650px) {
+  body > [data-rag-chat-widget-host] {
+    bottom: calc(84px + var(--rw-keyboard-offset, 0px)) !important;
+  }
+}
