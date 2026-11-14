@@ -33,6 +33,7 @@
       email ? "Email: " + email : "", "Requirement: " + selected,
       "Details: " + details].filter(Boolean);
     const url = "https://wa.me/918788680371?text=" + encodeURIComponent(lines.join("\n"));
+    if (window.BitmintAnalytics) window.BitmintAnalytics.track('contact_whatsapp_click', { source: 'contact_form_handoff' });
     window.location.assign(url);
   });
 })();
