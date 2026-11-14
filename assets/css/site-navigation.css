@@ -78,7 +78,9 @@ html.unav-announcement-hidden body::before {
   display: none;
 }
 .unav-announce {
-  position: absolute;
+  /* Keep the NOTIQ notice visible above the sticky navigation while scrolling.
+     The body spacer reserves its layout height before the deferred JS inserts it. */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
