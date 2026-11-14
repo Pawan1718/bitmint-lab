@@ -1466,15 +1466,9 @@ function drawDataSignals(time) {
 
     function render(time) {
 
-        if (!visible) {
-
-            animationFrame =
-                window.requestAnimationFrame(
-                    render
-                );
-
+        if (!visible || doc.hidden) {
+            animationFrame = null;
             return;
-
         }
 
 
@@ -1515,10 +1509,9 @@ drawPulseNodes(
     time || 0
 );
 
-        animationFrame =
-            window.requestAnimationFrame(
-                render
-            );
+        animationFrame = visible && !doc.hidden
+            ? window.requestAnimationFrame(render)
+            : null;
 
     }
 
@@ -1585,8 +1578,10 @@ drawPulseNodes(
                     entries.forEach(
                         function (entry) {
 
-                            visible =
-                                entry.isIntersecting;
+                            visible = entry.isIntersecting;
+                            if (visible && !doc.hidden && animationFrame === null) {
+                                animationFrame = window.requestAnimationFrame(render);
+                            }
 
                         }
                     );
@@ -1603,6 +1598,12 @@ drawPulseNodes(
 
     }
 
+
+    doc.addEventListener("visibilitychange", function () {
+        if (!doc.hidden && visible && animationFrame === null) {
+            animationFrame = window.requestAnimationFrame(render);
+        }
+    });
 
     /* -----------------------------------------------------
        RESIZE HANDLING
