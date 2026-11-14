@@ -64,3 +64,33 @@ body:has(>.unav-header){padding-top:0!important}
  .unav-announce-link{font-size:11px}
  .unav-header{top:62px}
 }
+
+
+/* Reserve announcement space before deferred navigation JS inserts it.
+   Prevents the page content from jumping when the NOTIQ notice appears. */
+body::before {
+  content: "";
+  display: block;
+  height: 42px;
+}
+body.unav-announcement-hidden::before,
+html.unav-announcement-hidden body::before {
+  display: none;
+}
+.unav-announce {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  height: 42px;
+  min-height: 0;
+  overflow: hidden;
+}
+@media (max-width: 650px) {
+  body::before { height: 62px; }
+  .unav-announce {
+    height: 62px;
+    align-content: center;
+  }
+}

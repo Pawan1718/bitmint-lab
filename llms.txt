@@ -1,0 +1,31 @@
+# Bitmint Lab
+
+> Bitmint Lab is a software product company based in Amravati, India. We build SaaS products, business software, websites, e-commerce applications and mobile apps.
+
+Official website: https://bitmintlab.in/
+
+## Products
+
+- [All products](https://bitmintlab.in/products/): Overview of Bitmint Lab products.
+- [NOTIQ](https://bitmintlab.in/products/notiq.html): Business messaging and customer communication platform.
+- [Shala ERP](https://bitmintlab.in/products/shala-erp.html): School management ERP software.
+- [HR-Lab](https://bitmintlab.in/products/hr-lab.html): Human resources management software.
+- [LMS Platform](https://bitmintlab.in/products/lms-platform.html): Learning management platform.
+- [AI Assistant](https://bitmintlab.in/products/ai-assistant.html): AI knowledge assistant.
+- [Business ERP](https://bitmintlab.in/products/business-erp.html): Business management software.
+- [CRM](https://bitmintlab.in/products/crm.html): Customer relationship management software.
+- [Paper Trading](https://bitmintlab.in/products/paper-trading.html): Paper-trading product information.
+
+## Company and Services
+
+- [Home and services](https://bitmintlab.in/): Company overview, custom software, web and mobile development, and contact.
+- [Blog](https://bitmintlab.in/blog/): Articles and product updates.
+- [Contact](https://bitmintlab.in/#contact): Business enquiries.
+
+## Policies
+
+- [Privacy policy](https://bitmintlab.in/privacy-policy.html)
+- [Terms and conditions](https://bitmintlab.in/terms-and-conditions.html)
+- [Refund policy](https://bitmintlab.in/refund-policy.html)
+
+Product availability and features may change. Refer to the linked product pages for current details.

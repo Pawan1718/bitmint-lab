@@ -1,0 +1,17 @@
+{
+  "specVersion": "1.0",
+  "entries": [
+    {
+      "identifier": "urn:air:bitmintlab.in:resources:website-overview",
+      "displayName": "Bitmint Lab Website Overview",
+      "description": "Machine-readable overview and links to Bitmint Lab products, services and company information.",
+      "type": "text/plain",
+      "url": "https://bitmintlab.in/llms.txt",
+      "representativeQueries": [
+        "What software products does Bitmint Lab offer?",
+        "Where can I find Bitmint Lab product and service information?",
+        "How can I contact Bitmint Lab about custom software development?"
+      ]
+    }
+  ]
+}
