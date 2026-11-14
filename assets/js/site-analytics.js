@@ -1,7 +1,7 @@
 /* Bitmint Lab analytics foundation. No identifiers or personal form fields are sent. */
 (function () {
   'use strict';
-  var measurementId = (document.querySelector('meta[name="bitmint-ga4-id"]') || {}).content || '';
+  var measurementId = window.BITMINT_GA4_ID || (document.querySelector('meta[name="bitmint-ga4-id"]') || {}).content || '';
   var gaId = /^G-[A-Z0-9]{6,20}$/.test(measurementId) ? measurementId : '';
   var consentKey = 'bitmint_analytics_consent_v1';
   var consent = 'unknown';
