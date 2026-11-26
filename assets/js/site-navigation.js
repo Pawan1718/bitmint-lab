@@ -24,6 +24,16 @@
  const close=document.createElement("button");close.type="button";close.textContent="×";close.setAttribute("aria-label","Dismiss announcement");
  close.addEventListener("click",()=>{notice.remove();document.documentElement.classList.add("unav-announcement-hidden")});
  notice.append(brand,message,context,link,close);header.parentNode.insertBefore(notice,header);
+ // The restaurant product lives on its own public site.
+ const restroMintUrl="https://restromint.blondheath4.chatgpt.site/";
+ header.querySelectorAll(".unav-products .unav-submenu").forEach(menu=>{
+   if(Array.from(menu.querySelectorAll("a[href]")).some(link=>link.href===restroMintUrl))return;
+   const link=document.createElement("a");
+   link.href=restroMintUrl;
+   link.textContent="RestroMint";
+   menu.querySelector("a[href*='index.html']")?.after(link);
+   if(!link.parentNode)menu.prepend(link);
+ });
  const details=Array.from(header.querySelectorAll("details"));
  const normalize=p=>p.replace(/\/index\.html$/,"/").replace(/\.html$/,"").replace(/\/$/,"/")||"/";
  const current=normalize(window.location.pathname);
